@@ -46,4 +46,12 @@ for input_name, input_value in zip(ort_session.get_inputs(), in_img):
 ort_outs = ort_session.run(outputs, inputs)
 ort_outs = [single_out.shape for single_out in ort_outs]
 ort_outs = OrderedDict(zip(outputs, ort_outs))
-print(ort_outs)
+
+# Traverse the nodes in the model
+for i, node in enumerate(model.graph.node):
+    print(f'Node {i}: {node.op_type}')
+    for input_name in node.input:
+        print(f'  Input: {input_name} {ort_outs.get(input_name)}')
+    for output_name in node.output:
+        print(f'  Output: {output_name} {ort_outs.get(output_name)}')
+# print(ort_outs)
