@@ -68,8 +68,11 @@ for ini in model.graph.initializer:
 
 # Traverse the nodes in the model
 node_list = []
+optype_list = []
 for i, node in enumerate(model.graph.node):
     print(f'Node {i}: {node.op_type}')
+    if not node.op_type in optype_list:
+        optype_list.append(node.op_type)
     input_info_list = []
     output_info_list = []
     for input_name in node.input:
@@ -79,6 +82,7 @@ for i, node in enumerate(model.graph.node):
         print(f'  Output: {output_name} {ort_outs.get(output_name)}')
         output_info_list.append({'name': f'{output_name}', 'shape': f'{ort_outs.get(output_name)}'})
     node_list.append({'optype': f'{node.op_type}', 'input':input_info_list, 'output': output_info_list})
+print(optype_list)
 
 with open(args.model + '_node_info.json', 'w') as f:
     # Write the JSON string to the file
