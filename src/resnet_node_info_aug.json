@@ -308,12 +308,12 @@
     ],
     "output": [
       {
-        "name": "resnetv22_stage1__plus0",
+        "name": "resnetv22_stage1__plus0_Identity",
         "shape": "(1, 64, 56, 56)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "BatchNormalization",
@@ -693,12 +693,12 @@
     ],
     "output": [
       {
-        "name": "resnetv22_stage2__plus0",
+        "name": "resnetv22_stage2__plus0_Identity",
         "shape": "(1, 128, 28, 28)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "BatchNormalization",
@@ -1078,12 +1078,12 @@
     ],
     "output": [
       {
-        "name": "resnetv22_stage3__plus0",
+        "name": "resnetv22_stage3__plus0_Identity",
         "shape": "(1, 256, 14, 14)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "BatchNormalization",
@@ -1463,12 +1463,12 @@
     ],
     "output": [
       {
-        "name": "resnetv22_stage4__plus0",
+        "name": "resnetv22_stage4__plus0_Identity",
         "shape": "(1, 512, 7, 7)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "BatchNormalization",
@@ -1775,5 +1775,77 @@
       }
     ],
     "link_class": "SIsink"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "resnetv22_stage1__plus0_Identity",
+        "shape": "(1, 64, 56, 56)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "resnetv22_stage1__plus0",
+        "shape": "(1, 64, 56, 56)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "resnetv22_stage2__plus0_Identity",
+        "shape": "(1, 128, 28, 28)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "resnetv22_stage2__plus0",
+        "shape": "(1, 128, 28, 28)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "resnetv22_stage3__plus0_Identity",
+        "shape": "(1, 256, 14, 14)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "resnetv22_stage3__plus0",
+        "shape": "(1, 256, 14, 14)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "resnetv22_stage4__plus0_Identity",
+        "shape": "(1, 512, 7, 7)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "resnetv22_stage4__plus0",
+        "shape": "(1, 512, 7, 7)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
   }
 ]

@@ -654,12 +654,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_261",
+        "name": "onnx::Pow_261_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -938,12 +938,12 @@
     ],
     "output": [
       {
-        "name": "input.15",
+        "name": "input.15_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -979,12 +979,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_280",
+        "name": "onnx::Pow_280_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -1751,12 +1751,12 @@
     ],
     "output": [
       {
-        "name": "input.23",
+        "name": "input.23_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -1792,12 +1792,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_365",
+        "name": "onnx::Pow_365_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -2076,12 +2076,12 @@
     ],
     "output": [
       {
-        "name": "input.35",
+        "name": "input.35_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -2117,12 +2117,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_384",
+        "name": "onnx::Pow_384_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -2889,12 +2889,12 @@
     ],
     "output": [
       {
-        "name": "input.43",
+        "name": "input.43_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -2930,12 +2930,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_469",
+        "name": "onnx::Pow_469_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -3214,12 +3214,12 @@
     ],
     "output": [
       {
-        "name": "input.55",
+        "name": "input.55_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -3255,12 +3255,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_488",
+        "name": "onnx::Pow_488_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -4027,12 +4027,12 @@
     ],
     "output": [
       {
-        "name": "input.63",
+        "name": "input.63_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -4068,12 +4068,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_573",
+        "name": "onnx::Pow_573_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -4352,12 +4352,12 @@
     ],
     "output": [
       {
-        "name": "input.75",
+        "name": "input.75_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -4393,12 +4393,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_592",
+        "name": "onnx::Pow_592_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -5165,12 +5165,12 @@
     ],
     "output": [
       {
-        "name": "input.83",
+        "name": "input.83_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -5206,12 +5206,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_677",
+        "name": "onnx::Pow_677_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -5490,12 +5490,12 @@
     ],
     "output": [
       {
-        "name": "input.95",
+        "name": "input.95_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -5531,12 +5531,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_696",
+        "name": "onnx::Pow_696_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -6303,12 +6303,12 @@
     ],
     "output": [
       {
-        "name": "input.103",
+        "name": "input.103_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -6344,12 +6344,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_781",
+        "name": "onnx::Pow_781_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -6628,12 +6628,12 @@
     ],
     "output": [
       {
-        "name": "input.115",
+        "name": "input.115_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -6669,12 +6669,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_800",
+        "name": "onnx::Pow_800_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -6861,12 +6861,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_811",
+        "name": "onnx::Pow_811_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -7674,12 +7674,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_896",
+        "name": "onnx::Pow_896_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -8436,12 +8436,12 @@
     ],
     "output": [
       {
-        "name": "input.135",
+        "name": "input.135_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -8477,12 +8477,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1006",
+        "name": "onnx::Pow_1006_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -8761,12 +8761,12 @@
     ],
     "output": [
       {
-        "name": "input.147",
+        "name": "input.147_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -8802,12 +8802,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1025",
+        "name": "onnx::Pow_1025_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -9574,12 +9574,12 @@
     ],
     "output": [
       {
-        "name": "input.155",
+        "name": "input.155_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -9615,12 +9615,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1110",
+        "name": "onnx::Pow_1110_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -10377,12 +10377,12 @@
     ],
     "output": [
       {
-        "name": "input.163",
+        "name": "input.163_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -10418,12 +10418,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1220",
+        "name": "onnx::Pow_1220_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -10702,12 +10702,12 @@
     ],
     "output": [
       {
-        "name": "input.175",
+        "name": "input.175_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -10743,12 +10743,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1239",
+        "name": "onnx::Pow_1239_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -11515,12 +11515,12 @@
     ],
     "output": [
       {
-        "name": "input.183",
+        "name": "input.183_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -11556,12 +11556,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1324",
+        "name": "onnx::Pow_1324_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -12318,12 +12318,12 @@
     ],
     "output": [
       {
-        "name": "input.191",
+        "name": "input.191_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -12359,12 +12359,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1434",
+        "name": "onnx::Pow_1434_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -12643,12 +12643,12 @@
     ],
     "output": [
       {
-        "name": "input.203",
+        "name": "input.203_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -12684,12 +12684,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1453",
+        "name": "onnx::Pow_1453_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -13456,12 +13456,12 @@
     ],
     "output": [
       {
-        "name": "input.211",
+        "name": "input.211_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -13497,12 +13497,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1538",
+        "name": "onnx::Pow_1538_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -14259,12 +14259,12 @@
     ],
     "output": [
       {
-        "name": "input.219",
+        "name": "input.219_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -14300,12 +14300,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1648",
+        "name": "onnx::Pow_1648_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -14584,12 +14584,12 @@
     ],
     "output": [
       {
-        "name": "input.231",
+        "name": "input.231_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -14625,12 +14625,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1667",
+        "name": "onnx::Pow_1667_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -15397,12 +15397,12 @@
     ],
     "output": [
       {
-        "name": "input.239",
+        "name": "input.239_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -15438,12 +15438,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1752",
+        "name": "onnx::Pow_1752_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -16200,12 +16200,12 @@
     ],
     "output": [
       {
-        "name": "input.247",
+        "name": "input.247_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -16241,12 +16241,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1862",
+        "name": "onnx::Pow_1862_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -16525,12 +16525,12 @@
     ],
     "output": [
       {
-        "name": "input.259",
+        "name": "input.259_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -16566,12 +16566,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1881",
+        "name": "onnx::Pow_1881_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -17338,12 +17338,12 @@
     ],
     "output": [
       {
-        "name": "input.267",
+        "name": "input.267_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -17379,12 +17379,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_1966",
+        "name": "onnx::Pow_1966_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -18141,12 +18141,12 @@
     ],
     "output": [
       {
-        "name": "input.275",
+        "name": "input.275_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -18182,12 +18182,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_2076",
+        "name": "onnx::Pow_2076_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -18466,12 +18466,12 @@
     ],
     "output": [
       {
-        "name": "input.287",
+        "name": "input.287_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "ReduceMean",
@@ -18507,12 +18507,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_2095",
+        "name": "onnx::Pow_2095_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -18699,12 +18699,12 @@
     ],
     "output": [
       {
-        "name": "onnx::Pow_2106",
+        "name": "onnx::Pow_2106_Identity",
         "shape": "(10, 1, 128)",
-        "num": 2
+        "num": 1
       }
     ],
-    "link_class": "MIMO"
+    "link_class": "MISO"
   },
   {
     "optype": "Pow",
@@ -18856,5 +18856,1085 @@
       }
     ],
     "link_class": "SIsink"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_261_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_261",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.15_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.15",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_280_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_280",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.23_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.23",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_365_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_365",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.35_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.35",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_384_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_384",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.43_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.43",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_469_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_469",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.55_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.55",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_488_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_488",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.63_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.63",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_573_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_573",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.75_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.75",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_592_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_592",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.83_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.83",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_677_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_677",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.95_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.95",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_696_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_696",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.103_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.103",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_781_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_781",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.115_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.115",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_800_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_800",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_811_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_811",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_896_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_896",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.135_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.135",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1006_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1006",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.147_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.147",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1025_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1025",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.155_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.155",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1110_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1110",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.163_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.163",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1220_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1220",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.175_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.175",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1239_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1239",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.183_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.183",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1324_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1324",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.191_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.191",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1434_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1434",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.203_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.203",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1453_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1453",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.211_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.211",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1538_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1538",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.219_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.219",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1648_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1648",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.231_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.231",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1667_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1667",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.239_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.239",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1752_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1752",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.247_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.247",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1862_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1862",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.259_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.259",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1881_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1881",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.267_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.267",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_1966_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_1966",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.275_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.275",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_2076_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_2076",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "input.287_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "input.287",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_2095_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_2095",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
+  },
+  {
+    "optype": "Identity",
+    "input": [
+      {
+        "name": "onnx::Pow_2106_Identity",
+        "shape": "(10, 1, 128)",
+        "type": "dependent"
+      }
+    ],
+    "output": [
+      {
+        "name": "onnx::Pow_2106",
+        "shape": "(10, 1, 128)",
+        "num": 2
+      }
+    ],
+    "link_class": "SIMO"
   }
 ]

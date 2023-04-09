@@ -9,8 +9,6 @@ from collections import OrderedDict
 # Create an argparse object and add arguments
 parser = argparse.ArgumentParser(description='Analyzing transformer and resnet models.')
 parser.add_argument('--model', type=str, required=True, help='Model to analyze (transformer or resnet)')
-# transformer query.13 query.1 / resnet data
-parser.add_argument('--sp', nargs='+', help='an array of start points')
 
 # Parse the arguments
 args = parser.parse_args()
@@ -37,7 +35,7 @@ org_outputs = [x.name for x in ort_session.get_outputs()]
 model = onnx.load(model_path)
 
 input_names_list = []
-output_names_list = args.sp
+output_names_list = []
 for node in model.graph.node:
     if node.op_type != 'Constant':
         input_names_list += node.input
@@ -105,10 +103,14 @@ for i, node in enumerate(model.graph.node):
     link_class = ''
     if num_input == 1:
         link_class += 'SI'
+    elif num_input == 0:
+        link_class += 'source'
     else:
         link_class += 'MI'
     if num_output == 1:
         link_class += 'SO'
+    elif num_output == 0:
+        link_class += 'sink'
     else:
         link_class += 'MO'
     node_list.append({'optype': f'{node.op_type}', 'input': input_info_list, 'output': output_info_list, 'link_class': link_class})
