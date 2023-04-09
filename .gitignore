@@ -4,5 +4,3 @@ __pycache__/
 # onnx model
 *.onnx
 *.txt
-# data file
-*.json
