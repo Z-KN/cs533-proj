@@ -70,6 +70,9 @@ for ini in model.graph.initializer:
 node_list = []
 optype_list = []
 for i, node in enumerate(model.graph.node):
+    # Constant should be excluded and embedded in its output node
+    if node.op_type == 'Constant':
+        continue
     print(f'Node {i}: {node.op_type}')
     if not node.op_type in optype_list:
         optype_list.append(node.op_type)
