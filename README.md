@@ -9,7 +9,7 @@ cd src
 python transformer.py
 ```
 ## Step 2: Dump out Node Info
-Gather node information from the model `MODEL_NAME (transformer/resnet)` and is recorded in a json file `$(MODEL_NAME)_node_info.json`.
+Gather node information from the model `MODEL_NAME (transformer/resnet)` and is recorded in a json file `$(MODEL_NAME)_node_info.json`. `Start_Points` refers to the outermost input node names. For example, input nodes for transformer are `query.13` and `query.1`, while `data` is the outermost input node for resnet.
 ```
-python analyse.py --model $(MODEL_NAME)
+python analyse.py --model $(MODEL_NAME) --sp $(Start_Points)
 ```

@@ -116,4 +116,4 @@ print(optype_list)
 
 with open(args.model + '_node_info.json', 'w') as f:
     # Write the JSON string to the file
-    json.dump(node_list, f, indent=4)
+    json.dump(node_list, f, indent=2)
