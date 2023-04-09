@@ -9,6 +9,8 @@ from collections import OrderedDict
 # Create an argparse object and add arguments
 parser = argparse.ArgumentParser(description='Analyzing transformer and resnet models.')
 parser.add_argument('--model', type=str, required=True, help='Model to analyze (transformer or resnet)')
+# transformer query.13 query.1 / resnet data
+parser.add_argument('--sp', nargs='+', help='an array of start points')
 
 # Parse the arguments
 args = parser.parse_args()
@@ -33,7 +35,13 @@ ort_session = ort.InferenceSession(model_path)
 org_outputs = [x.name for x in ort_session.get_outputs()]
 
 model = onnx.load(model_path)
+
+input_names_list = []
+output_names_list = args.sp
 for node in model.graph.node:
+    if node.op_type != 'Constant':
+        input_names_list += node.input
+        output_names_list += node.output
     for output in node.output:
         if output not in org_outputs:
             model.graph.output.extend([onnx.ValueInfoProto(name=output)])
@@ -78,13 +86,32 @@ for i, node in enumerate(model.graph.node):
         optype_list.append(node.op_type)
     input_info_list = []
     output_info_list = []
+    num_input = 0
+    num_output = 0
     for input_name in node.input:
-        print(f'  Input: {input_name} {ort_outs.get(input_name)}')
-        input_info_list.append({'name': f'{input_name}', 'shape': f'{ort_outs.get(input_name)}'})
+        dup_count = output_names_list.count(input_name)
+        if dup_count == 0:
+            print(f'  Input: {input_name} {ort_outs.get(input_name)} independent')
+            input_info_list.append({'name': f'{input_name}', 'shape': f'{ort_outs.get(input_name)}', 'type': 'independent'})
+        elif dup_count == 1:
+            num_input += 1
+            print(f'  Input: {input_name} {ort_outs.get(input_name)} dependent')
+            input_info_list.append({'name': f'{input_name}', 'shape': f'{ort_outs.get(input_name)}', 'type': 'dependent'})
     for output_name in node.output:
-        print(f'  Output: {output_name} {ort_outs.get(output_name)}')
-        output_info_list.append({'name': f'{output_name}', 'shape': f'{ort_outs.get(output_name)}'})
-    node_list.append({'optype': f'{node.op_type}', 'input':input_info_list, 'output': output_info_list})
+        dup_count = input_names_list.count(output_name)
+        num_output += dup_count
+        print(f'  Output: {output_name} {ort_outs.get(output_name)} {dup_count}')
+        output_info_list.append({'name': f'{output_name}', 'shape': f'{ort_outs.get(output_name)}', 'num': dup_count})
+    link_class = ''
+    if num_input == 1:
+        link_class += 'SI'
+    else:
+        link_class += 'MI'
+    if num_output == 1:
+        link_class += 'SO'
+    else:
+        link_class += 'MO'
+    node_list.append({'optype': f'{node.op_type}', 'input': input_info_list, 'output': output_info_list, 'link_class': link_class})
 print(optype_list)
 
 with open(args.model + '_node_info.json', 'w') as f:
