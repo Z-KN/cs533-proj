@@ -4,9 +4,11 @@ import numpy as np
 # Define the mapping matrix
 # Rows correspond to nodes (A, B, C)
 # Columns correspond to processing elements (PE1, PE2, PE3, PE4)
-graph = np.array([[0, 1, 1],  # Distance between PE1 and all other PEs
-                  [0, 0, 1],  # Distance between PE2 and all other PEs
-                  [0, 0, 0]]) # Distance between PE4 and all other PEs
+# graph = np.array([[0, 1, 1],  # Distance between PE1 and all other PEs
+#                   [0, 0, 1],  # Distance between PE2 and all other PEs
+#                   [0, 0, 0]]) # Distance between PE4 and all other PEs
+# graph = np.loadtxt('resnet_connection_matrix.txt',delimiter=',')
+graph = np.loadtxt('transformer_connection_matrix.txt',delimiter=',')
 
 # mapping_matrix = np.array([0,1,2]),  # Node A mapped to PE1
 mapping_matrix = np.array([[1, 0, 0, 0],  # Node A mapped to PE1
@@ -25,22 +27,25 @@ hops = np.array([[0, 1, 2],  # Hops from node A to all other nodes
 
 # Compute the total cost
 # print(distances[mapping_matrix])
-print(graph@mapping_matrix * (mapping_matrix@distances))
+# print(graph@mapping_matrix * (mapping_matrix@distances))
 # print(mapping_matrix.T@graph * (distances@mapping_matrix.T))
 # print(distances[mapping_matrix].T@graph)
-total_cost = np.sum(graph@mapping_matrix * (mapping_matrix@distances))
-print(f"total_cost={total_cost}")
+# total_cost = np.sum(graph@mapping_matrix * (mapping_matrix@distances))
+# print(f"total_cost={total_cost}")
 # Create a new model
 m = gp.Model()
 
 # mapping = np.stack((A_mapping,B_mapping,C_mapping),axis=0)
-mapping = m.addMVar((3,4),vtype=gp.GRB.BINARY)
-m.addMConstr(np.full((1, 4), 1), mapping[0].T, '=', np.full(1, 1))
-m.addMConstr(np.full((1, 4), 1), mapping[1].T, '=', np.full(1, 1))
-m.addMConstr(np.full((1, 4), 1), mapping[2].T, '=', np.full(1, 1))
+num_var = graph.shape[0]
+mapping = m.addMVar((num_var,4),vtype=gp.GRB.BINARY)
+for i in range(num_var):
+    m.addMConstr(np.full((1, 4), 1), mapping[i].T, '=', np.full(1, 1))
+
+# m.addMConstr(np.full((1, 4), 1), mapping[1].T, '=', np.full(1, 1))
+# m.addMConstr(np.full((1, 4), 1), mapping[2].T, '=', np.full(1, 1))
 
 
-val=(graph@mapping) * (mapping@distances)
+val=(graph @ mapping) * (mapping @ distances)
 m.setObjective(val.sum(), gp.GRB.MINIMIZE)
 m.optimize()
 

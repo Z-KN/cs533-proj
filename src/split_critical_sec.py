@@ -70,6 +70,11 @@ while len(source_node_list) != 0:
     # if cur node is MO -> stop
     if 'MO' in cur_node['link_class']:
         stop_flag = 1
+        for node_idx in range(len(node_dic)):
+            for input_port in node_dic[node_idx]['input']:
+                if input_port['name'] == cur_output_name:
+                    source_node_list.append(node_idx)
+                    source_node_history.append(node_idx)
     while stop_flag == 0:
         # search for the next node
         detect_flag = 0
@@ -115,7 +120,7 @@ total_small_nodes = 0
 for big_node in cs_list:
     total_small_nodes += len(big_node)
 # pdb.set_trace()
-# assert total_small_nodes == augmented_num_nodes
+assert total_small_nodes == augmented_num_nodes
 print(f'[+] Get Big Nodes -> {len(cs_list)}')
 with open(args.model + '_bignode_info.json', 'w') as f_bignode:
     # Write the JSON string to the file
