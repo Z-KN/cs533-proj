@@ -121,7 +121,23 @@ for i, node in enumerate(model.graph.node):
         link_class += 'sink'
     else:
         link_class += 'MO'
-    node_list.append({'optype': f'{node.op_type}', 'input': input_info_list, 'output': output_info_list, 'link_class': link_class})
+
+    # add attribute for some node type (Conv,Gemm,Maxpool)
+    if node.op_type in ('Conv', 'Gemm', 'MaxPool'):
+        att_dic = {}
+        for att_item in node.attribute:
+            att_name = att_item.name
+            if att_item.ints:
+                att_dic[att_name] = list(att_item.ints)
+            elif att_item.floats:
+                att_dic[att_name] = list(att_item.floats)
+            elif att_item.HasField('i'):
+                att_dic[att_name] = att_item.i
+            elif att_item.HasField('f'):
+                att_dic[att_name] = att_item.f
+        node_list.append({'optype': f'{node.op_type}', 'input': input_info_list, 'attribute': att_dic, 'output': output_info_list, 'link_class': link_class})
+    else:
+        node_list.append({'optype': f'{node.op_type}', 'input': input_info_list, 'output': output_info_list, 'link_class': link_class})
 print(optype_list)
 
 with open(args.model + '_node_info.json', 'w') as f:

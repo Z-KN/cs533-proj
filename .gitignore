@@ -4,3 +4,5 @@ __pycache__/
 # onnx model
 *.onnx
 *.txt
+!resnet_connection_matrix.txt
+!transformer_connection_matrix.txt

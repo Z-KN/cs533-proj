@@ -72,7 +72,7 @@ while len(source_node_list) != 0:
         stop_flag = 1
         for node_idx in range(len(node_dic)):
             for input_port in node_dic[node_idx]['input']:
-                if input_port['name'] == cur_output_name:
+                if input_port['name'] == cur_output_name and (not (node_idx in source_node_history)):
                     source_node_list.append(node_idx)
                     source_node_history.append(node_idx)
     while stop_flag == 0:
@@ -81,7 +81,6 @@ while len(source_node_list) != 0:
         for node_idx in range(len(node_dic)):
             for input_port in node_dic[node_idx]['input']:
                 if input_port['name'] == cur_output_name:
-                    # pdb.set_trace()
                     cur_node_idx = node_idx
                     cur_node = node_dic[cur_node_idx]
                     cur_output_name = cur_node['output'][0]['name']
@@ -96,7 +95,7 @@ while len(source_node_list) != 0:
             cur_node_dic_list.append(cur_node)
             for node_idx in range(len(node_dic)):
                 for input_port in node_dic[node_idx]['input']:
-                    if input_port['name'] == cur_output_name:
+                    if (input_port['name'] == cur_output_name) and (not (node_idx in source_node_history)):
                         source_node_list.append(node_idx)
                         source_node_history.append(node_idx)
         # MI -> do not include it and put it as source nodes and stop
@@ -119,7 +118,6 @@ print('[+] Finish merging nodes!')
 total_small_nodes = 0
 for big_node in cs_list:
     total_small_nodes += len(big_node)
-# pdb.set_trace()
 assert total_small_nodes == augmented_num_nodes
 print(f'[+] Get Big Nodes -> {len(cs_list)}')
 with open(args.model + '_bignode_info.json', 'w') as f_bignode:

@@ -52,6 +52,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          7,
+          7
+        ],
+        "pads": [
+          3,
+          3,
+          3,
+          3
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_conv0_fwd",
@@ -126,6 +147,22 @@
           "type": "dependent"
         }
       ],
+      "attribute": {
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_pool0_fwd",
@@ -275,6 +312,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          1,
+          1
+        ],
+        "pads": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage2_conv2_fwd",
@@ -424,6 +482,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          1,
+          1
+        ],
+        "pads": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage3_conv2_fwd",
@@ -573,6 +652,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          1,
+          1
+        ],
+        "pads": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage4_conv2_fwd",
@@ -766,6 +866,12 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "alpha": 1.0,
+        "beta": 1.0,
+        "transA": 0,
+        "transB": 1
+      },
       "output": [
         {
           "name": "resnetv22_dense0_fwd",
@@ -847,6 +953,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage4_conv3_fwd",
@@ -926,6 +1053,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage4_conv4_fwd",
@@ -951,6 +1099,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage4_conv0_fwd",
@@ -1030,6 +1199,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage4_conv1_fwd",
@@ -1111,6 +1301,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage3_conv3_fwd",
@@ -1190,6 +1401,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage3_conv4_fwd",
@@ -1215,6 +1447,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage3_conv0_fwd",
@@ -1294,6 +1547,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage3_conv1_fwd",
@@ -1375,6 +1649,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage2_conv3_fwd",
@@ -1454,6 +1749,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage2_conv4_fwd",
@@ -1479,6 +1795,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage2_conv0_fwd",
@@ -1558,6 +1895,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage2_conv1_fwd",
@@ -1639,6 +1997,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage1_conv2_fwd",
@@ -1718,6 +2097,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage1_conv3_fwd",
@@ -1799,6 +2199,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage1_conv0_fwd",
@@ -1878,6 +2299,27 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
       "output": [
         {
           "name": "resnetv22_stage1_conv1_fwd",
