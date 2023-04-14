@@ -5,6 +5,7 @@ import numpy as np
 import argparse
 import json
 from collections import OrderedDict
+import pdb
 
 # Create an argparse object and add arguments
 parser = argparse.ArgumentParser(description='Analyzing transformer and resnet models.')
@@ -41,10 +42,11 @@ for node in model.graph.node:
         input_names_list += node.input
         output_names_list += node.output
     for output in node.output:
+        # include output name
         if output not in org_outputs:
             model.graph.output.extend([onnx.ValueInfoProto(name=output)])
 
-# execute onnx
+# execute onnx to get output shape
 ort_session = ort.InferenceSession(model.SerializeToString())
 outputs = [x.name for x in ort_session.get_outputs()]
 inputs = {}
@@ -53,24 +55,29 @@ for input_name, input_value in zip(ort_session.get_inputs(), in_img):
 ort_outs = ort_session.run(outputs, inputs)
 ort_outs = [single_out.shape for single_out in ort_outs]
 ort_outs = OrderedDict(zip(outputs, ort_outs))
+# add entry point shape
+for input_index in range(len(in_img)):
+    ort_outs[ort_session.get_inputs()[input_index].name] = in_img[input_index].shape
 
 # extend directory
 for input in model.graph.input:
-    dim_list = [str(d.dim_value) for d in input.type.tensor_type.shape.dim]
-    if len(dim_list) == 0:
-        ort_outs[input.name] = '()'
-    elif len(dim_list) == 1:
-        ort_outs[input.name] = '(' + dim_list[0] + ',)'
-    else:
-        ort_outs[input.name] = '(' + ', '.join(dim_list) + ')'
+    if input.name not in ort_outs:
+        dim_list = [str(d.dim_value) for d in input.type.tensor_type.shape.dim]
+        if len(dim_list) == 0:
+            ort_outs[input.name] = '()'
+        elif len(dim_list) == 1:
+            ort_outs[input.name] = '(' + dim_list[0] + ',)'
+        else:
+            ort_outs[input.name] = '(' + ', '.join(dim_list) + ')'
 for ini in model.graph.initializer:
-    dim_list = [str(dim) for dim in ini.dims]
-    if len(dim_list) == 0:
-        ort_outs[ini.name] = '()'
-    elif len(dim_list) == 1:
-        ort_outs[ini.name] = '(' + dim_list[0] + ',)'
-    else:
-        ort_outs[ini.name] = '(' + ', '.join(dim_list) + ')'
+    if ini.name not in ort_outs:
+        dim_list = [str(dim) for dim in ini.dims]
+        if len(dim_list) == 0:
+            ort_outs[ini.name] = '()'
+        elif len(dim_list) == 1:
+            ort_outs[ini.name] = '(' + dim_list[0] + ',)'
+        else:
+            ort_outs[ini.name] = '(' + ', '.join(dim_list) + ')'
 
 # Traverse the nodes in the model
 node_list = []

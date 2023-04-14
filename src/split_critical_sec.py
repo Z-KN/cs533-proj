@@ -115,7 +115,7 @@ total_small_nodes = 0
 for big_node in cs_list:
     total_small_nodes += len(big_node)
 # pdb.set_trace()
-# assert total_small_nodes == augmented_num_nodes
+assert total_small_nodes == augmented_num_nodes
 print(f'[+] Get Big Nodes -> {len(cs_list)}')
 with open(args.model + '_bignode_info.json', 'w') as f_bignode:
     # Write the JSON string to the file
