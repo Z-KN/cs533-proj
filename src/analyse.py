@@ -9,7 +9,8 @@ import pdb
 
 # Create an argparse object and add arguments
 parser = argparse.ArgumentParser(description='Analyzing transformer and resnet models.')
-parser.add_argument('--model', type=str, required=True, help='Model to analyze (transformer or resnet)')
+parser.add_argument('--model', type=str, required=False, help='Model to analyze (transformer or resnet)',
+                    default='transformer')
 
 # Parse the arguments
 args = parser.parse_args()

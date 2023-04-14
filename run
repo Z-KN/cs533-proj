@@ -1,0 +1,4 @@
+#! /bin/bash
+cd src
+python3 analyse.py --model ${1:-"resnet"}
+python3 split_critical_sec.py --model ${1:-"resnet"}

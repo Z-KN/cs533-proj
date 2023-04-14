@@ -70,6 +70,11 @@ while len(source_node_list) != 0:
     # if cur node is MO -> stop
     if 'MO' in cur_node['link_class']:
         stop_flag = 1
+        for node_idx in range(len(node_dic)):
+            for input_port in node_dic[node_idx]['input']:
+                if input_port['name'] == cur_output_name:
+                    source_node_list.append(node_idx)
+                    source_node_history.append(node_idx)
     while stop_flag == 0:
         # search for the next node
         detect_flag = 0
