@@ -13,6 +13,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_191",
@@ -36,6 +37,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_192",
@@ -54,6 +56,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_193",
@@ -77,6 +80,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_195",
@@ -100,6 +106,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_198",
@@ -123,6 +130,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_200",
@@ -146,6 +154,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_202",
@@ -179,6 +188,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_203",
@@ -202,6 +212,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_205",
@@ -235,6 +246,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_206",
@@ -258,6 +270,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_208",
@@ -291,6 +304,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_209",
@@ -314,6 +328,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_218",
@@ -332,6 +349,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q",
@@ -355,6 +379,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_229",
@@ -378,6 +405,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_239",
@@ -396,6 +426,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v",
@@ -419,6 +456,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_242",
@@ -437,6 +475,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_243",
@@ -460,6 +505,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn",
@@ -478,6 +524,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_245",
@@ -501,6 +550,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_246",
@@ -519,6 +569,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_247",
@@ -542,6 +599,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_255",
@@ -565,6 +625,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_257",
@@ -588,6 +649,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input",
@@ -611,6 +673,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.3",
@@ -629,6 +692,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_260",
@@ -652,6 +720,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_261_Identity",
@@ -675,6 +744,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_263",
@@ -693,6 +763,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_264",
@@ -716,6 +791,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_266",
@@ -734,6 +810,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_267",
@@ -757,6 +834,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_268",
@@ -780,6 +858,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_269",
@@ -803,6 +882,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_270",
@@ -826,6 +906,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_272",
@@ -849,6 +930,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_273",
@@ -867,6 +949,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.7",
@@ -890,6 +973,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_276",
@@ -913,6 +997,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.11",
@@ -936,6 +1021,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.15_Identity",
@@ -954,6 +1040,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_279",
@@ -977,6 +1068,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_280_Identity",
@@ -1000,6 +1092,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_282",
@@ -1018,6 +1111,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_283",
@@ -1041,6 +1139,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_285",
@@ -1059,6 +1158,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_286",
@@ -1082,6 +1182,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_287",
@@ -1105,6 +1206,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_288",
@@ -1128,6 +1230,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query",
@@ -1151,6 +1254,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_295",
@@ -1174,6 +1278,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_296",
@@ -1192,6 +1297,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_297",
@@ -1215,6 +1321,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_299",
@@ -1238,6 +1347,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_302",
@@ -1261,6 +1371,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_304",
@@ -1284,6 +1395,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_306",
@@ -1317,6 +1429,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_307",
@@ -1340,6 +1453,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_309",
@@ -1373,6 +1487,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_310",
@@ -1396,6 +1511,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_312",
@@ -1429,6 +1545,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_313",
@@ -1452,6 +1569,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_322",
@@ -1470,6 +1590,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.3",
@@ -1493,6 +1620,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_333",
@@ -1516,6 +1646,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_343",
@@ -1534,6 +1667,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.3",
@@ -1557,6 +1697,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_346",
@@ -1575,6 +1716,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_347",
@@ -1598,6 +1746,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.3",
@@ -1616,6 +1765,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_349",
@@ -1639,6 +1791,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_350",
@@ -1657,6 +1810,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_351",
@@ -1680,6 +1840,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_359",
@@ -1703,6 +1866,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_361",
@@ -1726,6 +1890,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.19",
@@ -1749,6 +1914,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.23_Identity",
@@ -1767,6 +1933,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_364",
@@ -1790,6 +1961,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_365_Identity",
@@ -1813,6 +1985,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_367",
@@ -1831,6 +2004,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_368",
@@ -1854,6 +2032,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_370",
@@ -1872,6 +2051,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_371",
@@ -1895,6 +2075,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_372",
@@ -1918,6 +2099,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_373",
@@ -1941,6 +2123,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_374",
@@ -1964,6 +2147,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_376",
@@ -1987,6 +2171,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_377",
@@ -2005,6 +2190,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.27",
@@ -2028,6 +2214,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_380",
@@ -2051,6 +2238,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.31",
@@ -2074,6 +2262,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.35_Identity",
@@ -2092,6 +2281,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_383",
@@ -2115,6 +2309,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_384_Identity",
@@ -2138,6 +2333,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_386",
@@ -2156,6 +2352,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_387",
@@ -2179,6 +2380,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_389",
@@ -2197,6 +2399,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_390",
@@ -2220,6 +2423,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_391",
@@ -2243,6 +2447,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_392",
@@ -2266,6 +2471,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.4",
@@ -2289,6 +2495,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_399",
@@ -2312,6 +2519,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_400",
@@ -2330,6 +2538,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_401",
@@ -2353,6 +2562,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_403",
@@ -2376,6 +2588,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_406",
@@ -2399,6 +2612,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_408",
@@ -2422,6 +2636,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_410",
@@ -2455,6 +2670,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_411",
@@ -2478,6 +2694,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_413",
@@ -2511,6 +2728,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_414",
@@ -2534,6 +2752,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_416",
@@ -2567,6 +2786,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_417",
@@ -2590,6 +2810,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_426",
@@ -2608,6 +2831,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.7",
@@ -2631,6 +2861,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_437",
@@ -2654,6 +2887,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_447",
@@ -2672,6 +2908,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.7",
@@ -2695,6 +2938,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_450",
@@ -2713,6 +2957,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_451",
@@ -2736,6 +2987,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.7",
@@ -2754,6 +3006,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_453",
@@ -2777,6 +3032,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_454",
@@ -2795,6 +3051,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_455",
@@ -2818,6 +3081,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_463",
@@ -2841,6 +3107,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_465",
@@ -2864,6 +3131,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.39",
@@ -2887,6 +3155,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.43_Identity",
@@ -2905,6 +3174,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_468",
@@ -2928,6 +3202,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_469_Identity",
@@ -2951,6 +3226,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_471",
@@ -2969,6 +3245,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_472",
@@ -2992,6 +3273,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_474",
@@ -3010,6 +3292,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_475",
@@ -3033,6 +3316,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_476",
@@ -3056,6 +3340,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_477",
@@ -3079,6 +3364,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_478",
@@ -3102,6 +3388,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_480",
@@ -3125,6 +3412,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_481",
@@ -3143,6 +3431,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.47",
@@ -3166,6 +3455,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_484",
@@ -3189,6 +3479,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.51",
@@ -3212,6 +3503,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.55_Identity",
@@ -3230,6 +3522,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_487",
@@ -3253,6 +3550,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_488_Identity",
@@ -3276,6 +3574,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_490",
@@ -3294,6 +3593,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_491",
@@ -3317,6 +3621,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_493",
@@ -3335,6 +3640,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_494",
@@ -3358,6 +3664,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_495",
@@ -3381,6 +3688,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_496",
@@ -3404,6 +3712,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.8",
@@ -3427,6 +3736,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_503",
@@ -3450,6 +3760,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_504",
@@ -3468,6 +3779,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_505",
@@ -3491,6 +3803,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_507",
@@ -3514,6 +3829,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_510",
@@ -3537,6 +3853,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_512",
@@ -3560,6 +3877,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_514",
@@ -3593,6 +3911,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_515",
@@ -3616,6 +3935,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_517",
@@ -3649,6 +3969,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_518",
@@ -3672,6 +3993,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_520",
@@ -3705,6 +4027,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_521",
@@ -3728,6 +4051,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_530",
@@ -3746,6 +4072,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.11",
@@ -3769,6 +4102,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_541",
@@ -3792,6 +4128,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_551",
@@ -3810,6 +4149,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.11",
@@ -3833,6 +4179,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_554",
@@ -3851,6 +4198,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_555",
@@ -3874,6 +4228,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.11",
@@ -3892,6 +4247,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_557",
@@ -3915,6 +4273,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_558",
@@ -3933,6 +4292,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_559",
@@ -3956,6 +4322,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_567",
@@ -3979,6 +4348,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_569",
@@ -4002,6 +4372,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.59",
@@ -4025,6 +4396,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.63_Identity",
@@ -4043,6 +4415,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_572",
@@ -4066,6 +4443,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_573_Identity",
@@ -4089,6 +4467,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_575",
@@ -4107,6 +4486,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_576",
@@ -4130,6 +4514,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_578",
@@ -4148,6 +4533,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_579",
@@ -4171,6 +4557,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_580",
@@ -4194,6 +4581,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_581",
@@ -4217,6 +4605,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_582",
@@ -4240,6 +4629,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_584",
@@ -4263,6 +4653,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_585",
@@ -4281,6 +4672,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.67",
@@ -4304,6 +4696,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_588",
@@ -4327,6 +4720,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.71",
@@ -4350,6 +4744,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.75_Identity",
@@ -4368,6 +4763,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_591",
@@ -4391,6 +4791,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_592_Identity",
@@ -4414,6 +4815,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_594",
@@ -4432,6 +4834,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_595",
@@ -4455,6 +4862,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_597",
@@ -4473,6 +4881,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_598",
@@ -4496,6 +4905,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_599",
@@ -4519,6 +4929,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_600",
@@ -4542,6 +4953,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.12",
@@ -4565,6 +4977,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_607",
@@ -4588,6 +5001,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_608",
@@ -4606,6 +5020,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_609",
@@ -4629,6 +5044,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_611",
@@ -4652,6 +5070,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_614",
@@ -4675,6 +5094,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_616",
@@ -4698,6 +5118,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_618",
@@ -4731,6 +5152,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_619",
@@ -4754,6 +5176,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_621",
@@ -4787,6 +5210,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_622",
@@ -4810,6 +5234,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_624",
@@ -4843,6 +5268,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_625",
@@ -4866,6 +5292,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_634",
@@ -4884,6 +5313,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.15",
@@ -4907,6 +5343,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_645",
@@ -4930,6 +5369,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_655",
@@ -4948,6 +5390,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.15",
@@ -4971,6 +5420,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_658",
@@ -4989,6 +5439,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_659",
@@ -5012,6 +5469,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.15",
@@ -5030,6 +5488,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_661",
@@ -5053,6 +5514,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_662",
@@ -5071,6 +5533,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_663",
@@ -5094,6 +5563,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_671",
@@ -5117,6 +5589,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_673",
@@ -5140,6 +5613,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.79",
@@ -5163,6 +5637,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.83_Identity",
@@ -5181,6 +5656,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_676",
@@ -5204,6 +5684,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_677_Identity",
@@ -5227,6 +5708,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_679",
@@ -5245,6 +5727,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_680",
@@ -5268,6 +5755,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_682",
@@ -5286,6 +5774,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_683",
@@ -5309,6 +5798,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_684",
@@ -5332,6 +5822,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_685",
@@ -5355,6 +5846,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_686",
@@ -5378,6 +5870,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_688",
@@ -5401,6 +5894,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_689",
@@ -5419,6 +5913,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.87",
@@ -5442,6 +5937,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_692",
@@ -5465,6 +5961,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.91",
@@ -5488,6 +5985,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.95_Identity",
@@ -5506,6 +6004,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_695",
@@ -5529,6 +6032,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_696_Identity",
@@ -5552,6 +6056,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_698",
@@ -5570,6 +6075,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_699",
@@ -5593,6 +6103,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_701",
@@ -5611,6 +6122,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_702",
@@ -5634,6 +6146,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_703",
@@ -5657,6 +6170,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_704",
@@ -5680,6 +6194,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.16",
@@ -5703,6 +6218,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_711",
@@ -5726,6 +6242,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_712",
@@ -5744,6 +6261,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_713",
@@ -5767,6 +6285,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_715",
@@ -5790,6 +6311,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_718",
@@ -5813,6 +6335,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_720",
@@ -5836,6 +6359,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_722",
@@ -5869,6 +6393,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_723",
@@ -5892,6 +6417,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_725",
@@ -5925,6 +6451,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_726",
@@ -5948,6 +6475,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_728",
@@ -5981,6 +6509,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_729",
@@ -6004,6 +6533,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_738",
@@ -6022,6 +6554,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.19",
@@ -6045,6 +6584,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_749",
@@ -6068,6 +6610,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_759",
@@ -6086,6 +6631,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.19",
@@ -6109,6 +6661,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_762",
@@ -6127,6 +6680,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_763",
@@ -6150,6 +6710,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.19",
@@ -6168,6 +6729,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_765",
@@ -6191,6 +6755,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_766",
@@ -6209,6 +6774,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_767",
@@ -6232,6 +6804,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_775",
@@ -6255,6 +6830,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_777",
@@ -6278,6 +6854,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.99",
@@ -6301,6 +6878,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.103_Identity",
@@ -6319,6 +6897,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_780",
@@ -6342,6 +6925,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_781_Identity",
@@ -6365,6 +6949,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_783",
@@ -6383,6 +6968,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_784",
@@ -6406,6 +6996,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_786",
@@ -6424,6 +7015,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_787",
@@ -6447,6 +7039,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_788",
@@ -6470,6 +7063,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_789",
@@ -6493,6 +7087,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_790",
@@ -6516,6 +7111,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_792",
@@ -6539,6 +7135,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_793",
@@ -6557,6 +7154,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.107",
@@ -6580,6 +7178,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_796",
@@ -6603,6 +7202,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.111",
@@ -6626,6 +7226,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.115_Identity",
@@ -6644,6 +7245,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_799",
@@ -6667,6 +7273,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_800_Identity",
@@ -6690,6 +7297,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_802",
@@ -6708,6 +7316,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_803",
@@ -6731,6 +7344,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_805",
@@ -6749,6 +7363,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_806",
@@ -6772,6 +7387,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_807",
@@ -6795,6 +7411,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_808",
@@ -6818,6 +7435,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.119",
@@ -6836,6 +7454,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_810",
@@ -6859,6 +7482,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_811_Identity",
@@ -6882,6 +7506,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_813",
@@ -6900,6 +7525,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_814",
@@ -6923,6 +7553,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_816",
@@ -6941,6 +7572,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_817",
@@ -6964,6 +7596,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_818",
@@ -6987,6 +7620,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_819",
@@ -7010,6 +7644,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "key",
@@ -7033,6 +7668,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_826",
@@ -7056,6 +7692,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_827",
@@ -7074,6 +7711,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_828",
@@ -7097,6 +7735,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_830",
@@ -7120,6 +7761,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_833",
@@ -7143,6 +7785,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_835",
@@ -7166,6 +7809,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_837",
@@ -7199,6 +7843,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_838",
@@ -7222,6 +7867,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_840",
@@ -7255,6 +7901,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_841",
@@ -7278,6 +7925,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_843",
@@ -7311,6 +7959,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_844",
@@ -7334,6 +7983,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_853",
@@ -7352,6 +8004,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.23",
@@ -7375,6 +8034,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_864",
@@ -7398,6 +8060,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_874",
@@ -7416,6 +8081,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.23",
@@ -7439,6 +8111,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_877",
@@ -7457,6 +8130,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_878",
@@ -7480,6 +8160,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.23",
@@ -7498,6 +8179,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_880",
@@ -7521,6 +8205,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_881",
@@ -7539,6 +8224,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_882",
@@ -7562,6 +8254,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_890",
@@ -7585,6 +8280,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_892",
@@ -7608,6 +8304,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.123",
@@ -7631,6 +8328,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.127",
@@ -7649,6 +8347,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_895",
@@ -7672,6 +8375,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_896_Identity",
@@ -7695,6 +8399,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_898",
@@ -7713,6 +8418,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_899",
@@ -7736,6 +8446,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_901",
@@ -7754,6 +8465,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_902",
@@ -7777,6 +8489,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_903",
@@ -7800,6 +8513,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_904",
@@ -7823,6 +8537,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.20",
@@ -7846,6 +8561,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_936",
@@ -7869,6 +8585,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_937",
@@ -7892,6 +8609,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_939",
@@ -7915,6 +8633,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_940",
@@ -7933,6 +8652,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_941",
@@ -7956,6 +8676,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_943",
@@ -7979,6 +8702,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_946",
@@ -8002,6 +8726,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_948",
@@ -8025,6 +8750,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_950",
@@ -8058,6 +8784,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_951",
@@ -8081,6 +8808,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_953",
@@ -8114,6 +8842,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_954",
@@ -8137,6 +8866,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_963",
@@ -8155,6 +8887,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.27",
@@ -8178,6 +8917,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_974",
@@ -8201,6 +8943,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_984",
@@ -8219,6 +8964,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.27",
@@ -8242,6 +8994,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_987",
@@ -8260,6 +9013,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_988",
@@ -8283,6 +9043,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.27",
@@ -8301,6 +9062,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_990",
@@ -8324,6 +9088,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_991",
@@ -8342,6 +9107,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_992",
@@ -8365,6 +9137,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1000",
@@ -8388,6 +9163,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1002",
@@ -8411,6 +9187,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.131",
@@ -8434,6 +9211,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.135_Identity",
@@ -8452,6 +9230,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1005",
@@ -8475,6 +9258,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1006_Identity",
@@ -8498,6 +9282,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1008",
@@ -8516,6 +9301,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1009",
@@ -8539,6 +9329,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1011",
@@ -8557,6 +9348,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1012",
@@ -8580,6 +9372,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1013",
@@ -8603,6 +9396,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1014",
@@ -8626,6 +9420,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1015",
@@ -8649,6 +9444,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1017",
@@ -8672,6 +9468,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_1018",
@@ -8690,6 +9487,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.139",
@@ -8713,6 +9511,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1021",
@@ -8736,6 +9535,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.143",
@@ -8759,6 +9559,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.147_Identity",
@@ -8777,6 +9578,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1024",
@@ -8800,6 +9606,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1025_Identity",
@@ -8823,6 +9630,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1027",
@@ -8841,6 +9649,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1028",
@@ -8864,6 +9677,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1030",
@@ -8882,6 +9696,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1031",
@@ -8905,6 +9720,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1032",
@@ -8928,6 +9744,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1033",
@@ -8951,6 +9768,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.24",
@@ -8974,6 +9792,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1040",
@@ -8997,6 +9816,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_1041",
@@ -9015,6 +9835,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_1042",
@@ -9038,6 +9859,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_1044",
@@ -9061,6 +9885,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1047",
@@ -9084,6 +9909,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1049",
@@ -9107,6 +9933,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1051",
@@ -9140,6 +9967,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1052",
@@ -9163,6 +9991,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1054",
@@ -9196,6 +10025,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1055",
@@ -9219,6 +10049,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1057",
@@ -9252,6 +10083,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1058",
@@ -9275,6 +10107,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1067",
@@ -9293,6 +10128,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.31",
@@ -9316,6 +10158,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1078",
@@ -9339,6 +10184,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1088",
@@ -9357,6 +10205,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.31",
@@ -9380,6 +10235,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1091",
@@ -9398,6 +10254,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_1092",
@@ -9421,6 +10284,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.31",
@@ -9439,6 +10303,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_1094",
@@ -9462,6 +10329,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_1095",
@@ -9480,6 +10348,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_1096",
@@ -9503,6 +10378,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1104",
@@ -9526,6 +10404,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1106",
@@ -9549,6 +10428,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.151",
@@ -9572,6 +10452,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.155_Identity",
@@ -9590,6 +10471,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1109",
@@ -9613,6 +10499,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1110_Identity",
@@ -9636,6 +10523,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1112",
@@ -9654,6 +10542,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1113",
@@ -9677,6 +10570,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1115",
@@ -9695,6 +10589,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1116",
@@ -9718,6 +10613,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1117",
@@ -9741,6 +10637,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1118",
@@ -9764,6 +10661,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.28",
@@ -9787,6 +10685,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1150",
@@ -9810,6 +10709,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1151",
@@ -9833,6 +10733,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1153",
@@ -9856,6 +10757,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_1154",
@@ -9874,6 +10776,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_1155",
@@ -9897,6 +10800,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_1157",
@@ -9920,6 +10826,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1160",
@@ -9943,6 +10850,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1162",
@@ -9966,6 +10874,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1164",
@@ -9999,6 +10908,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1165",
@@ -10022,6 +10932,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1167",
@@ -10055,6 +10966,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1168",
@@ -10078,6 +10990,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1177",
@@ -10096,6 +11011,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.35",
@@ -10119,6 +11041,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1188",
@@ -10142,6 +11067,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1198",
@@ -10160,6 +11088,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.35",
@@ -10183,6 +11118,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1201",
@@ -10201,6 +11137,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_1202",
@@ -10224,6 +11167,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.35",
@@ -10242,6 +11186,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_1204",
@@ -10265,6 +11212,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_1205",
@@ -10283,6 +11231,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_1206",
@@ -10306,6 +11261,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1214",
@@ -10329,6 +11287,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1216",
@@ -10352,6 +11311,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.159",
@@ -10375,6 +11335,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.163_Identity",
@@ -10393,6 +11354,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1219",
@@ -10416,6 +11382,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1220_Identity",
@@ -10439,6 +11406,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1222",
@@ -10457,6 +11425,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1223",
@@ -10480,6 +11453,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1225",
@@ -10498,6 +11472,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1226",
@@ -10521,6 +11496,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1227",
@@ -10544,6 +11520,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1228",
@@ -10567,6 +11544,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1229",
@@ -10590,6 +11568,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1231",
@@ -10613,6 +11592,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_1232",
@@ -10631,6 +11611,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.167",
@@ -10654,6 +11635,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1235",
@@ -10677,6 +11659,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.171",
@@ -10700,6 +11683,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.175_Identity",
@@ -10718,6 +11702,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1238",
@@ -10741,6 +11730,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1239_Identity",
@@ -10764,6 +11754,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1241",
@@ -10782,6 +11773,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1242",
@@ -10805,6 +11801,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1244",
@@ -10823,6 +11820,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1245",
@@ -10846,6 +11844,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1246",
@@ -10869,6 +11868,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1247",
@@ -10892,6 +11892,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.32",
@@ -10915,6 +11916,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1254",
@@ -10938,6 +11940,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_1255",
@@ -10956,6 +11959,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_1256",
@@ -10979,6 +11983,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_1258",
@@ -11002,6 +12009,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1261",
@@ -11025,6 +12033,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1263",
@@ -11048,6 +12057,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1265",
@@ -11081,6 +12091,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1266",
@@ -11104,6 +12115,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1268",
@@ -11137,6 +12149,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1269",
@@ -11160,6 +12173,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1271",
@@ -11193,6 +12207,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1272",
@@ -11216,6 +12231,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1281",
@@ -11234,6 +12252,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.39",
@@ -11257,6 +12282,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1292",
@@ -11280,6 +12308,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1302",
@@ -11298,6 +12329,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.39",
@@ -11321,6 +12359,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1305",
@@ -11339,6 +12378,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_1306",
@@ -11362,6 +12408,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.39",
@@ -11380,6 +12427,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_1308",
@@ -11403,6 +12453,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_1309",
@@ -11421,6 +12472,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_1310",
@@ -11444,6 +12502,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1318",
@@ -11467,6 +12528,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1320",
@@ -11490,6 +12552,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.179",
@@ -11513,6 +12576,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.183_Identity",
@@ -11531,6 +12595,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1323",
@@ -11554,6 +12623,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1324_Identity",
@@ -11577,6 +12647,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1326",
@@ -11595,6 +12666,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1327",
@@ -11618,6 +12694,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1329",
@@ -11636,6 +12713,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1330",
@@ -11659,6 +12737,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1331",
@@ -11682,6 +12761,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1332",
@@ -11705,6 +12785,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.36",
@@ -11728,6 +12809,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1364",
@@ -11751,6 +12833,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1365",
@@ -11774,6 +12857,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1367",
@@ -11797,6 +12881,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_1368",
@@ -11815,6 +12900,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_1369",
@@ -11838,6 +12924,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_1371",
@@ -11861,6 +12950,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1374",
@@ -11884,6 +12974,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1376",
@@ -11907,6 +12998,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1378",
@@ -11940,6 +13032,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1379",
@@ -11963,6 +13056,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1381",
@@ -11996,6 +13090,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1382",
@@ -12019,6 +13114,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1391",
@@ -12037,6 +13135,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.43",
@@ -12060,6 +13165,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1402",
@@ -12083,6 +13191,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1412",
@@ -12101,6 +13212,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.43",
@@ -12124,6 +13242,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1415",
@@ -12142,6 +13261,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_1416",
@@ -12165,6 +13291,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.43",
@@ -12183,6 +13310,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_1418",
@@ -12206,6 +13336,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_1419",
@@ -12224,6 +13355,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_1420",
@@ -12247,6 +13385,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1428",
@@ -12270,6 +13411,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1430",
@@ -12293,6 +13435,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.187",
@@ -12316,6 +13459,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.191_Identity",
@@ -12334,6 +13478,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1433",
@@ -12357,6 +13506,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1434_Identity",
@@ -12380,6 +13530,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1436",
@@ -12398,6 +13549,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1437",
@@ -12421,6 +13577,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1439",
@@ -12439,6 +13596,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1440",
@@ -12462,6 +13620,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1441",
@@ -12485,6 +13644,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1442",
@@ -12508,6 +13668,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1443",
@@ -12531,6 +13692,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1445",
@@ -12554,6 +13716,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_1446",
@@ -12572,6 +13735,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.195",
@@ -12595,6 +13759,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1449",
@@ -12618,6 +13783,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.199",
@@ -12641,6 +13807,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.203_Identity",
@@ -12659,6 +13826,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1452",
@@ -12682,6 +13854,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1453_Identity",
@@ -12705,6 +13878,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1455",
@@ -12723,6 +13897,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1456",
@@ -12746,6 +13925,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1458",
@@ -12764,6 +13944,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1459",
@@ -12787,6 +13968,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1460",
@@ -12810,6 +13992,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1461",
@@ -12833,6 +14016,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.40",
@@ -12856,6 +14040,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1468",
@@ -12879,6 +14064,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_1469",
@@ -12897,6 +14083,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_1470",
@@ -12920,6 +14107,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_1472",
@@ -12943,6 +14133,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1475",
@@ -12966,6 +14157,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1477",
@@ -12989,6 +14181,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1479",
@@ -13022,6 +14215,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1480",
@@ -13045,6 +14239,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1482",
@@ -13078,6 +14273,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1483",
@@ -13101,6 +14297,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1485",
@@ -13134,6 +14331,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1486",
@@ -13157,6 +14355,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1495",
@@ -13175,6 +14376,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.47",
@@ -13198,6 +14406,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1506",
@@ -13221,6 +14432,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1516",
@@ -13239,6 +14453,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.47",
@@ -13262,6 +14483,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1519",
@@ -13280,6 +14502,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_1520",
@@ -13303,6 +14532,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.47",
@@ -13321,6 +14551,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_1522",
@@ -13344,6 +14577,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_1523",
@@ -13362,6 +14596,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_1524",
@@ -13385,6 +14626,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1532",
@@ -13408,6 +14652,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1534",
@@ -13431,6 +14676,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.207",
@@ -13454,6 +14700,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.211_Identity",
@@ -13472,6 +14719,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1537",
@@ -13495,6 +14747,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1538_Identity",
@@ -13518,6 +14771,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1540",
@@ -13536,6 +14790,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1541",
@@ -13559,6 +14818,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1543",
@@ -13577,6 +14837,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1544",
@@ -13600,6 +14861,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1545",
@@ -13623,6 +14885,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1546",
@@ -13646,6 +14909,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.44",
@@ -13669,6 +14933,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1578",
@@ -13692,6 +14957,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1579",
@@ -13715,6 +14981,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1581",
@@ -13738,6 +15005,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_1582",
@@ -13756,6 +15024,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_1583",
@@ -13779,6 +15048,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_1585",
@@ -13802,6 +15074,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1588",
@@ -13825,6 +15098,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1590",
@@ -13848,6 +15122,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1592",
@@ -13881,6 +15156,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1593",
@@ -13904,6 +15180,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1595",
@@ -13937,6 +15214,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1596",
@@ -13960,6 +15238,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1605",
@@ -13978,6 +15259,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.51",
@@ -14001,6 +15289,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1616",
@@ -14024,6 +15315,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1626",
@@ -14042,6 +15336,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.51",
@@ -14065,6 +15366,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1629",
@@ -14083,6 +15385,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_1630",
@@ -14106,6 +15415,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.51",
@@ -14124,6 +15434,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_1632",
@@ -14147,6 +15460,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_1633",
@@ -14165,6 +15479,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_1634",
@@ -14188,6 +15509,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1642",
@@ -14211,6 +15535,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1644",
@@ -14234,6 +15559,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.215",
@@ -14257,6 +15583,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.219_Identity",
@@ -14275,6 +15602,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1647",
@@ -14298,6 +15630,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1648_Identity",
@@ -14321,6 +15654,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1650",
@@ -14339,6 +15673,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1651",
@@ -14362,6 +15701,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1653",
@@ -14380,6 +15720,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1654",
@@ -14403,6 +15744,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1655",
@@ -14426,6 +15768,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1656",
@@ -14449,6 +15792,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1657",
@@ -14472,6 +15816,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1659",
@@ -14495,6 +15840,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_1660",
@@ -14513,6 +15859,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.223",
@@ -14536,6 +15883,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1663",
@@ -14559,6 +15907,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.227",
@@ -14582,6 +15931,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.231_Identity",
@@ -14600,6 +15950,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1666",
@@ -14623,6 +15978,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1667_Identity",
@@ -14646,6 +16002,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1669",
@@ -14664,6 +16021,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1670",
@@ -14687,6 +16049,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1672",
@@ -14705,6 +16068,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1673",
@@ -14728,6 +16092,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1674",
@@ -14751,6 +16116,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1675",
@@ -14774,6 +16140,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.48",
@@ -14797,6 +16164,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1682",
@@ -14820,6 +16188,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_1683",
@@ -14838,6 +16207,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_1684",
@@ -14861,6 +16231,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_1686",
@@ -14884,6 +16257,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1689",
@@ -14907,6 +16281,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1691",
@@ -14930,6 +16305,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1693",
@@ -14963,6 +16339,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1694",
@@ -14986,6 +16363,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1696",
@@ -15019,6 +16397,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1697",
@@ -15042,6 +16421,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1699",
@@ -15075,6 +16455,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1700",
@@ -15098,6 +16479,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1709",
@@ -15116,6 +16500,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.55",
@@ -15139,6 +16530,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1720",
@@ -15162,6 +16556,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1730",
@@ -15180,6 +16577,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.55",
@@ -15203,6 +16607,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1733",
@@ -15221,6 +16626,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_1734",
@@ -15244,6 +16656,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.55",
@@ -15262,6 +16675,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_1736",
@@ -15285,6 +16701,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_1737",
@@ -15303,6 +16720,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_1738",
@@ -15326,6 +16750,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1746",
@@ -15349,6 +16776,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1748",
@@ -15372,6 +16800,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.235",
@@ -15395,6 +16824,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.239_Identity",
@@ -15413,6 +16843,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1751",
@@ -15436,6 +16871,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1752_Identity",
@@ -15459,6 +16895,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1754",
@@ -15477,6 +16914,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1755",
@@ -15500,6 +16942,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1757",
@@ -15518,6 +16961,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1758",
@@ -15541,6 +16985,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1759",
@@ -15564,6 +17009,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1760",
@@ -15587,6 +17033,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.52",
@@ -15610,6 +17057,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1792",
@@ -15633,6 +17081,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1793",
@@ -15656,6 +17105,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1795",
@@ -15679,6 +17129,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_1796",
@@ -15697,6 +17148,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_1797",
@@ -15720,6 +17172,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_1799",
@@ -15743,6 +17198,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1802",
@@ -15766,6 +17222,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1804",
@@ -15789,6 +17246,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1806",
@@ -15822,6 +17280,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1807",
@@ -15845,6 +17304,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1809",
@@ -15878,6 +17338,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1810",
@@ -15901,6 +17362,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1819",
@@ -15919,6 +17383,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.59",
@@ -15942,6 +17413,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1830",
@@ -15965,6 +17439,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1840",
@@ -15983,6 +17460,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.59",
@@ -16006,6 +17490,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1843",
@@ -16024,6 +17509,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_1844",
@@ -16047,6 +17539,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.59",
@@ -16065,6 +17558,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_1846",
@@ -16088,6 +17584,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_1847",
@@ -16106,6 +17603,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_1848",
@@ -16129,6 +17633,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1856",
@@ -16152,6 +17659,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1858",
@@ -16175,6 +17683,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.243",
@@ -16198,6 +17707,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.247_Identity",
@@ -16216,6 +17726,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1861",
@@ -16239,6 +17754,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1862_Identity",
@@ -16262,6 +17778,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1864",
@@ -16280,6 +17797,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1865",
@@ -16303,6 +17825,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1867",
@@ -16321,6 +17844,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1868",
@@ -16344,6 +17868,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1869",
@@ -16367,6 +17892,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1870",
@@ -16390,6 +17916,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1871",
@@ -16413,6 +17940,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1873",
@@ -16436,6 +17964,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_1874",
@@ -16454,6 +17983,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.251",
@@ -16477,6 +18007,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1877",
@@ -16500,6 +18031,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.255",
@@ -16523,6 +18055,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.259_Identity",
@@ -16541,6 +18074,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1880",
@@ -16564,6 +18102,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1881_Identity",
@@ -16587,6 +18126,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1883",
@@ -16605,6 +18145,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1884",
@@ -16628,6 +18173,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1886",
@@ -16646,6 +18192,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1887",
@@ -16669,6 +18216,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1888",
@@ -16692,6 +18240,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1889",
@@ -16715,6 +18264,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.56",
@@ -16738,6 +18288,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1896",
@@ -16761,6 +18312,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_1897",
@@ -16779,6 +18331,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_1898",
@@ -16802,6 +18355,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_1900",
@@ -16825,6 +18381,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1903",
@@ -16848,6 +18405,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1905",
@@ -16871,6 +18429,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1907",
@@ -16904,6 +18463,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1908",
@@ -16927,6 +18487,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1910",
@@ -16960,6 +18521,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1911",
@@ -16983,6 +18545,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_1913",
@@ -17016,6 +18579,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_1914",
@@ -17039,6 +18603,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1923",
@@ -17057,6 +18624,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.63",
@@ -17080,6 +18654,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1934",
@@ -17103,6 +18680,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_1944",
@@ -17121,6 +18701,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.63",
@@ -17144,6 +18731,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_1947",
@@ -17162,6 +18750,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_1948",
@@ -17185,6 +18780,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.63",
@@ -17203,6 +18799,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_1950",
@@ -17226,6 +18825,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_1951",
@@ -17244,6 +18844,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_1952",
@@ -17267,6 +18874,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_1960",
@@ -17290,6 +18900,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1962",
@@ -17313,6 +18924,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.263",
@@ -17336,6 +18948,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.267_Identity",
@@ -17354,6 +18967,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_1965",
@@ -17377,6 +18995,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_1966_Identity",
@@ -17400,6 +19019,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_1968",
@@ -17418,6 +19038,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_1969",
@@ -17441,6 +19066,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_1971",
@@ -17459,6 +19085,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_1972",
@@ -17482,6 +19109,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_1973",
@@ -17505,6 +19133,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_1974",
@@ -17528,6 +19157,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "query.60",
@@ -17551,6 +19181,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_2006",
@@ -17574,6 +19205,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_2007",
@@ -17597,6 +19229,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_2009",
@@ -17620,6 +19253,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Shape_2010",
@@ -17638,6 +19272,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Gather_2011",
@@ -17661,6 +19296,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "axis": 0
+    },
     "output": [
       {
         "name": "onnx::Add_2013",
@@ -17684,6 +19322,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_2016",
@@ -17707,6 +19346,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_2018",
@@ -17730,6 +19370,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_2020",
@@ -17763,6 +19404,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_2021",
@@ -17786,6 +19428,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Slice_2023",
@@ -17819,6 +19462,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Reshape_2024",
@@ -17842,6 +19486,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_2033",
@@ -17860,6 +19507,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "q.67",
@@ -17883,6 +19537,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_2044",
@@ -17906,6 +19563,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::Transpose_2054",
@@ -17924,6 +19584,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "v.67",
@@ -17947,6 +19614,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_2057",
@@ -17965,6 +19633,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        2,
+        0
+      ]
+    },
     "output": [
       {
         "name": "onnx::MatMul_2058",
@@ -17988,6 +19663,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "attn.67",
@@ -18006,6 +19682,9 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axis": -1
+    },
     "output": [
       {
         "name": "onnx::MatMul_2060",
@@ -18029,6 +19708,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Transpose_2061",
@@ -18047,6 +19727,13 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "perm": [
+        1,
+        0,
+        2
+      ]
+    },
     "output": [
       {
         "name": "onnx::Reshape_2062",
@@ -18070,6 +19757,9 @@
         "type": "independent"
       }
     ],
+    "attribute": {
+      "allowzero": 0
+    },
     "output": [
       {
         "name": "onnx::MatMul_2070",
@@ -18093,6 +19783,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_2072",
@@ -18116,6 +19807,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.271",
@@ -18139,6 +19831,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.275_Identity",
@@ -18157,6 +19850,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_2075",
@@ -18180,6 +19878,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_2076_Identity",
@@ -18203,6 +19902,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_2078",
@@ -18221,6 +19921,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_2079",
@@ -18244,6 +19949,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_2081",
@@ -18262,6 +19968,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_2082",
@@ -18285,6 +19992,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_2083",
@@ -18308,6 +20016,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_2084",
@@ -18331,6 +20040,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::MatMul_2085",
@@ -18354,6 +20064,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_2087",
@@ -18377,6 +20088,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Relu_2088",
@@ -18395,6 +20107,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.279",
@@ -18418,6 +20131,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_2091",
@@ -18441,6 +20155,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.283",
@@ -18464,6 +20179,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.287_Identity",
@@ -18482,6 +20198,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_2094",
@@ -18505,6 +20226,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_2095_Identity",
@@ -18528,6 +20250,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_2097",
@@ -18546,6 +20269,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_2098",
@@ -18569,6 +20297,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_2100",
@@ -18587,6 +20316,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_2101",
@@ -18610,6 +20340,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_2102",
@@ -18633,6 +20364,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_2103",
@@ -18656,6 +20388,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "input.291",
@@ -18674,6 +20407,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Sub_2105",
@@ -18697,6 +20435,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Pow_2106_Identity",
@@ -18720,6 +20459,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::ReduceMean_2108",
@@ -18738,6 +20478,11 @@
         "type": "dependent"
       }
     ],
+    "attribute": {
+      "axes": [
+        -1
+      ]
+    },
     "output": [
       {
         "name": "onnx::Add_2109",
@@ -18761,6 +20506,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Sqrt_2111",
@@ -18779,6 +20525,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Div_2112",
@@ -18802,6 +20549,7 @@
         "type": "dependent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Mul_2113",
@@ -18825,6 +20573,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "onnx::Add_2114",
@@ -18848,6 +20597,7 @@
         "type": "independent"
       }
     ],
+    "attribute": {},
     "output": [
       {
         "name": "2115",

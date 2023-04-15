@@ -29,6 +29,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_batchnorm0_fwd",
@@ -111,6 +116,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_batchnorm1_fwd",
@@ -129,6 +139,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_relu0_fwd",
@@ -188,6 +199,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage1__plus0_Identity",
@@ -231,6 +243,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage1__plus1",
@@ -269,6 +282,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage2_batchnorm0_fwd",
@@ -287,6 +305,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage2_activation0",
@@ -358,6 +377,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage2__plus0_Identity",
@@ -401,6 +421,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage2__plus1",
@@ -439,6 +460,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage3_batchnorm0_fwd",
@@ -457,6 +483,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage3_activation0",
@@ -528,6 +555,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage3__plus0_Identity",
@@ -571,6 +599,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage3__plus1",
@@ -609,6 +638,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage4_batchnorm0_fwd",
@@ -627,6 +661,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage4_activation0",
@@ -698,6 +733,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage4__plus0_Identity",
@@ -741,6 +777,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage4__plus1",
@@ -779,6 +816,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_batchnorm2_fwd",
@@ -797,6 +839,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_relu1_fwd",
@@ -815,6 +858,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_pool1_fwd",
@@ -838,6 +882,7 @@
           "type": "independent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_flatten0_reshape0",
@@ -912,6 +957,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage4_batchnorm2_fwd",
@@ -930,6 +980,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage4_activation2",
@@ -1012,6 +1063,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage4_batchnorm3_fwd",
@@ -1030,6 +1086,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage4_activation3",
@@ -1158,6 +1215,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage4_batchnorm1_fwd",
@@ -1176,6 +1238,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage4_activation1",
@@ -1260,6 +1323,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage3_batchnorm2_fwd",
@@ -1278,6 +1346,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage3_activation2",
@@ -1360,6 +1429,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage3_batchnorm3_fwd",
@@ -1378,6 +1452,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage3_activation3",
@@ -1506,6 +1581,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage3_batchnorm1_fwd",
@@ -1524,6 +1604,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage3_activation1",
@@ -1608,6 +1689,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage2_batchnorm2_fwd",
@@ -1626,6 +1712,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage2_activation2",
@@ -1708,6 +1795,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage2_batchnorm3_fwd",
@@ -1726,6 +1818,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage2_activation3",
@@ -1854,6 +1947,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage2_batchnorm1_fwd",
@@ -1872,6 +1970,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage2_activation1",
@@ -1956,6 +2055,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage1_batchnorm2_fwd",
@@ -1974,6 +2078,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage1_activation2",
@@ -2056,6 +2161,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage1_batchnorm3_fwd",
@@ -2074,6 +2184,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage1_activation3",
@@ -2158,6 +2269,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage1_batchnorm0_fwd",
@@ -2176,6 +2292,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage1_activation0",
@@ -2258,6 +2375,11 @@
           "type": "independent"
         }
       ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
           "name": "resnetv22_stage1_batchnorm1_fwd",
@@ -2276,6 +2398,7 @@
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
           "name": "resnetv22_stage1_activation1",
