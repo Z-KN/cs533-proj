@@ -5,6 +5,7 @@ import numpy as np
 import argparse
 import json
 from collections import OrderedDict
+import os
 import pdb
 
 # Create an argparse object and add arguments
@@ -22,14 +23,19 @@ if args.model == 'transformer':
     model_path = 'transformer.onnx'
     in_img = [np.random.randn(10, 1, 128).astype(np.float32), \
         np.random.randn(10, 1, 128).astype(np.float32)]
+    data_dir = './transformer'
 elif args.model == 'resnet':
     print('Analyzing resnet model...')
     # Call function to analyze resnet model
     model_path = 'resnet18-v2-7.onnx'
     in_img = [np.random.randn(1,3,224,224).astype(np.float32)]
+    data_dir = './resnet'
 else:
     print('Error: Model not recognized. Please choose transformer or resnet.')
     exit(1)
+# create folder to store model data
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
 
 ort_session = ort.InferenceSession(model_path)
 org_outputs = [x.name for x in ort_session.get_outputs()]
@@ -70,7 +76,10 @@ for input in model.graph.input:
             ort_outs[input.name] = '(' + dim_list[0] + ',)'
         else:
             ort_outs[input.name] = '(' + ', '.join(dim_list) + ')'
+# Store independent value
+ini_value = {}
 for ini in model.graph.initializer:
+    ini_value[ini.name] = ini.raw_data
     if ini.name not in ort_outs:
         dim_list = [str(dim) for dim in ini.dims]
         if len(dim_list) == 0:
@@ -86,6 +95,7 @@ optype_list = []
 for i, node in enumerate(model.graph.node):
     # Constant should be excluded and embedded in its output node
     if node.op_type == 'Constant':
+        ini_value[node.output[0]] = node.attribute[0].t.raw_data
         continue
     print(f'Node {i}: {node.op_type}')
     if not node.op_type in optype_list:
@@ -97,6 +107,11 @@ for i, node in enumerate(model.graph.node):
     for input_name in node.input:
         dup_count = output_names_list.count(input_name)
         if dup_count == 0:
+            try:
+                with open(data_dir+'/'+input_name+'.data', 'wb') as f_indep:
+                    f_indep.write(ini_value[input_name])
+            except:
+                print(f'Cannot find the value for {input_name}')
             print(f'  Input: {input_name} {ort_outs.get(input_name)} independent')
             input_info_list.append({'name': f'{input_name}', 'shape': f'{ort_outs.get(input_name)}', 'type': 'independent'})
         elif dup_count == 1:
