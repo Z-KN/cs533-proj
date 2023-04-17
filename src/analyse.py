@@ -79,7 +79,12 @@ for input in model.graph.input:
 # Store independent value
 ini_value = {}
 for ini in model.graph.initializer:
-    ini_value[ini.name] = ini.raw_data
+    if hasattr(ini, 'int64_data') and (len(ini.int64_data) > 0):
+        ini_value[ini.name] = np.array(ini.int64_data).tobytes()
+    elif hasattr(ini, 'float_data') and (len(ini.float_data) > 0):
+        ini_value[ini.name] = np.array(ini.float_data).tobytes()
+    elif hasattr(ini, 'raw_data') and (len(ini.raw_data) > 0):
+        ini_value[ini.name] = ini.raw_data
     if ini.name not in ort_outs:
         dim_list = [str(dim) for dim in ini.dims]
         if len(dim_list) == 0:
