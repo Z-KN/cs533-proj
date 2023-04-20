@@ -5,21 +5,25 @@
       {
         "name": "data",
         "shape": "(1, 3, 224, 224)",
-        "value": "None",
+        "value": null,
         "type": "None",
         "dependency": "independent"
       },
       {
         "name": "data_scale",
         "shape": "()",
-        "value": "0.0039215669967234135",
+        "value": [
+          0.0039215669967234135
+        ],
         "type": "float32",
         "dependency": "independent"
       },
       {
         "name": "data_zero_point",
         "shape": "()",
-        "value": "-128",
+        "value": [
+          -128
+        ],
         "type": "int8",
         "dependency": "independent"
       }
@@ -45,7 +49,7 @@
       {
         "name": "resnetv22_conv0_weight_quantized",
         "shape": "(64, 3, 7, 7)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -91,14 +95,18 @@
       {
         "name": "resnetv22_conv0_fwd_scale",
         "shape": "()",
-        "value": "0.023876352235674858",
+        "value": [
+          0.023876352235674858
+        ],
         "type": "float32",
         "dependency": "independent"
       },
       {
         "name": "resnetv22_conv0_fwd_zero_point",
         "shape": "()",
-        "value": "-128",
+        "value": [
+          -128
+        ],
         "type": "int8",
         "dependency": "independent"
       }
@@ -177,14 +185,18 @@
       {
         "name": "resnetv22_pool0_fwd_scale",
         "shape": "()",
-        "value": "0.023876352235674858",
+        "value": [
+          0.023876352235674858
+        ],
         "type": "float32",
         "dependency": "independent"
       },
       {
         "name": "resnetv22_pool0_fwd_zero_point",
         "shape": "()",
-        "value": "-128",
+        "value": [
+          -128
+        ],
         "type": "int8",
         "dependency": "independent"
       }
@@ -210,14 +222,18 @@
       {
         "name": "resnetv22_stage1_activation0_scale",
         "shape": "()",
-        "value": "0.023876352235674858",
+        "value": [
+          0.023876352235674858
+        ],
         "type": "float32",
         "dependency": "independent"
       },
       {
         "name": "resnetv22_stage1_activation0_zero_point",
         "shape": "()",
-        "value": "-128",
+        "value": [
+          -128
+        ],
         "type": "int8",
         "dependency": "independent"
       }
@@ -243,7 +259,7 @@
       {
         "name": "resnetv22_stage1_conv0_weight_quantized",
         "shape": "(64, 64, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -289,7 +305,7 @@
       {
         "name": "resnetv22_stage1_conv1_weight_quantized",
         "shape": "(64, 64, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -359,7 +375,7 @@
       {
         "name": "resnetv22_stage1_conv2_weight_quantized",
         "shape": "(64, 64, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -405,7 +421,7 @@
       {
         "name": "resnetv22_stage1_conv3_weight_quantized",
         "shape": "(64, 64, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -475,7 +491,7 @@
       {
         "name": "resnetv22_stage2_conv0_weight_quantized",
         "shape": "(128, 64, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -521,7 +537,7 @@
       {
         "name": "resnetv22_stage2_conv2_weight_quantized",
         "shape": "(128, 64, 1, 1)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -567,7 +583,7 @@
       {
         "name": "resnetv22_stage2_conv1_weight_quantized",
         "shape": "(128, 128, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -637,7 +653,7 @@
       {
         "name": "resnetv22_stage2_conv3_weight_quantized",
         "shape": "(128, 128, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -683,7 +699,7 @@
       {
         "name": "resnetv22_stage2_conv4_weight_quantized",
         "shape": "(128, 128, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -753,7 +769,7 @@
       {
         "name": "resnetv22_stage3_conv0_weight_quantized",
         "shape": "(256, 128, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -799,7 +815,7 @@
       {
         "name": "resnetv22_stage3_conv2_weight_quantized",
         "shape": "(256, 128, 1, 1)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -845,7 +861,7 @@
       {
         "name": "resnetv22_stage3_conv1_weight_quantized",
         "shape": "(256, 256, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -915,7 +931,7 @@
       {
         "name": "resnetv22_stage3_conv3_weight_quantized",
         "shape": "(256, 256, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -961,7 +977,7 @@
       {
         "name": "resnetv22_stage3_conv4_weight_quantized",
         "shape": "(256, 256, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -1031,7 +1047,7 @@
       {
         "name": "resnetv22_stage4_conv0_weight_quantized",
         "shape": "(512, 256, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -1077,7 +1093,7 @@
       {
         "name": "resnetv22_stage4_conv2_weight_quantized",
         "shape": "(512, 256, 1, 1)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -1123,7 +1139,7 @@
       {
         "name": "resnetv22_stage4_conv1_weight_quantized",
         "shape": "(512, 512, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -1193,7 +1209,7 @@
       {
         "name": "resnetv22_stage4_conv3_weight_quantized",
         "shape": "(512, 512, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -1239,7 +1255,7 @@
       {
         "name": "resnetv22_stage4_conv4_weight_quantized",
         "shape": "(512, 512, 3, 3)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       }
@@ -1326,16 +1342,14 @@
         "name": "resnetv22_pool1_fwd_quantized",
         "shape": "(1, 512, 1, 1)",
         "dependency": "dependent"
-      },
-      {
-        "name": "reshape_attr_tensor164",
-        "shape": "(2,)",
-        "value": "None",
-        "type": "int64",
-        "dependency": "independent"
       }
     ],
-    "attribute": {},
+    "attribute": {
+      "shape": [
+        0,
+        -1
+      ]
+    },
     "output": [
       {
         "name": "resnetv22_flatten0_reshape0_quantized",
@@ -1356,14 +1370,14 @@
       {
         "name": "resnetv22_dense0_weight_quantized",
         "shape": "(1000, 512)",
-        "value": "None",
+        "value": null,
         "type": "int8",
         "dependency": "independent"
       },
       {
         "name": "resnetv22_dense0_bias_quantized",
         "shape": "(1000,)",
-        "value": "None",
+        "value": null,
         "type": "int32",
         "dependency": "independent"
       }
@@ -1393,14 +1407,18 @@
       {
         "name": "resnetv22_dense0_fwd_scale",
         "shape": "()",
-        "value": "0.0011222896864637733",
+        "value": [
+          0.0011222896864637733
+        ],
         "type": "float32",
         "dependency": "independent"
       },
       {
         "name": "resnetv22_dense0_fwd_zero_point",
         "shape": "()",
-        "value": "-3",
+        "value": [
+          -3
+        ],
         "type": "int8",
         "dependency": "independent"
       }

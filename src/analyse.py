@@ -109,7 +109,6 @@ for ini in model.graph.initializer:
     elif hasattr(ini, 'raw_data') and (len(ini.raw_data) > 0):
         ini_value[ini.name] = ini.raw_data
     else:
-        pdb.set_trace()
         print("New data type in initializer!")
         exit(1)
     if ini.name not in ort_outs:
@@ -143,7 +142,7 @@ for i, node in enumerate(model.graph.node):
     num_output = 0
     for input_name in node.input:
         dup_count = output_names_list.count(input_name)
-        if (dup_count == 0):
+        if (dup_count == 0) and (node.op_type not in ('Slice', 'Reshape')):
             value = None
             try:
                 data_type = ini_type[input_name]
@@ -160,14 +159,12 @@ for i, node in enumerate(model.graph.node):
             else:
                 # Only scale/zero point in QuantizeLinear,DequantizeLinear should be included in json
                 if node.op_type in ('QuantizeLinear', 'DequantizeLinear'):
-                    value = np.frombuffer(ini_value[input_name], dtype=eval('np.'+ini_type[input_name]))
-                    assert len(value) == 1
-                    value = value[0]
+                    value = np.frombuffer(ini_value[input_name], dtype=eval('np.'+ini_type[input_name])).tolist()
                 else:
                     continue  # ignore scale and zero point for other operator
             print(f'  Input: {input_name} {ort_outs.get(input_name)} independent')
             input_info_list.append({'name': f'{input_name}', 'shape': f'{ort_outs.get(input_name)}', \
-                                    'value': f'{value}', 'type': f'{data_type}', 'dependency': 'independent'})
+                                    'value': value, 'type': f'{data_type}', 'dependency': 'independent'})
         elif dup_count == 1:
             num_input += 1
             print(f'  Input: {input_name} {ort_outs.get(input_name)} dependent')
@@ -206,6 +203,18 @@ for i, node in enumerate(model.graph.node):
             att_dic[att_name] = att_item.f
         else:
             print('New data type in attribute!')
+    # Operator Slice/Reshape has their attribute in initializer
+    if node.op_type == 'Slice':
+        slice_att = ['starts', 'ends', 'axes']
+        value_list = [np.frombuffer(ini_value[node.input[slice_idx]], \
+                               dtype=eval('np.'+ini_type[node.input[slice_idx]])).tolist() \
+                                for slice_idx in range(1,4)]
+        for slice_idx in range(3):
+            att_dic[slice_att[slice_idx]] = value_list[slice_idx]
+    elif node.op_type == 'Reshape':
+        value = np.frombuffer(ini_value[node.input[1]], \
+                                dtype=eval('np.'+ini_type[node.input[1]])).tolist()
+        att_dic['shape'] = value
     node_list.append({'optype': f'{node.op_type}', 'input': input_info_list, 'attribute': att_dic, 'output': output_info_list, 'link_class': link_class})
 print(optype_list)
 
