@@ -6,7 +6,24 @@ import argparse
 import json
 from collections import OrderedDict
 import os
+import shutil
 import pdb
+
+# type dic
+data_type_dic = {}
+data_type_dic[onnx.TensorProto.INT64] = 'int64'
+data_type_dic[onnx.TensorProto.INT32] = 'int32'
+data_type_dic[onnx.TensorProto.INT16] = 'int16'
+data_type_dic[onnx.TensorProto.INT8] = 'int8'
+data_type_dic[onnx.TensorProto.UINT64] = 'uint64'
+data_type_dic[onnx.TensorProto.UINT32] = 'uint32'
+data_type_dic[onnx.TensorProto.UINT16] = 'uint16'
+data_type_dic[onnx.TensorProto.UINT8] = 'uint8'
+data_type_dic[onnx.TensorProto.INT64] = 'int64'
+data_type_dic[onnx.TensorProto.INT32] = 'int32'
+data_type_dic[onnx.TensorProto.INT16] = 'int16'
+data_type_dic[onnx.TensorProto.FLOAT16] = 'float16'
+data_type_dic[onnx.TensorProto.FLOAT] = 'float32'
 
 # Create an argparse object and add arguments
 parser = argparse.ArgumentParser(description='Analyzing transformer and resnet models.')
@@ -19,22 +36,24 @@ args = parser.parse_args()
 # Check which model was selected
 if args.model == 'transformer':
     print('Analyzing transformer model...')
-    # Call function to analyze transformer model
-    model_path = 'transformer.onnx'
+    # Call function to analyze quantized transformer model
+    model_path = 'transformer_q.onnx'
     in_img = [np.random.randn(10, 1, 128).astype(np.float32), \
         np.random.randn(10, 1, 128).astype(np.float32)]
-    data_dir = './transformer'
 elif args.model == 'resnet':
     print('Analyzing resnet model...')
-    # Call function to analyze resnet model
-    model_path = 'resnet18-v2-7.onnx'
+    # Call function to analyze quantized resnet model
+    model_path = 'resnet18-v2-7_q.onnx'
     in_img = [np.random.randn(1,3,224,224).astype(np.float32)]
-    data_dir = './resnet'
 else:
     print('Error: Model not recognized. Please choose transformer or resnet.')
     exit(1)
 # create folder to store model data
+data_dir = './' + args.model
 if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
+else:
+    shutil.rmtree(data_dir)
     os.makedirs(data_dir)
 
 ort_session = ort.InferenceSession(model_path)
@@ -78,13 +97,21 @@ for input in model.graph.input:
             ort_outs[input.name] = '(' + ', '.join(dim_list) + ')'
 # Store independent value
 ini_value = {}
+ini_type = {}
 for ini in model.graph.initializer:
+    ini_type[ini.name] = data_type_dic[ini.data_type]
     if hasattr(ini, 'int64_data') and (len(ini.int64_data) > 0):
-        ini_value[ini.name] = np.array(ini.int64_data).tobytes()
+        ini_value[ini.name] = np.array(ini.int64_data, dtype=eval('np.'+ini_type[ini.name])).tobytes()
+    elif hasattr(ini, 'int32_data') and (len(ini.int32_data) > 0):
+        ini_value[ini.name] = np.array(ini.int32_data, dtype=eval('np.'+ini_type[ini.name])).tobytes()
     elif hasattr(ini, 'float_data') and (len(ini.float_data) > 0):
-        ini_value[ini.name] = np.array(ini.float_data).tobytes()
+        ini_value[ini.name] = np.array(ini.float_data, dtype=eval('np.'+ini_type[ini.name])).tobytes()
     elif hasattr(ini, 'raw_data') and (len(ini.raw_data) > 0):
         ini_value[ini.name] = ini.raw_data
+    else:
+        pdb.set_trace()
+        print("New data type in initializer!")
+        exit(1)
     if ini.name not in ort_outs:
         dim_list = [str(dim) for dim in ini.dims]
         if len(dim_list) == 0:
@@ -100,7 +127,12 @@ optype_list = []
 for i, node in enumerate(model.graph.node):
     # Constant should be excluded and embedded in its output node
     if node.op_type == 'Constant':
-        ini_value[node.output[0]] = node.attribute[0].t.raw_data
+        if len(node.attribute[0].t.raw_data) > 0:
+            ini_type[node.output[0]] = data_type_dic[node.attribute[0].t.data_type]
+            ini_value[node.output[0]] = node.attribute[0].t.raw_data
+        else:
+            print("Cannot get data of Constant Node!")
+            exit(1)
         continue
     print(f'Node {i}: {node.op_type}')
     if not node.op_type in optype_list:
@@ -111,18 +143,36 @@ for i, node in enumerate(model.graph.node):
     num_output = 0
     for input_name in node.input:
         dup_count = output_names_list.count(input_name)
-        if dup_count == 0:
+        if (dup_count == 0):
+            value = None
             try:
-                with open(data_dir+'/'+input_name+'.data', 'wb') as f_indep:
-                    f_indep.write(ini_value[input_name])
+                data_type = ini_type[input_name]
             except:
-                print(f'Cannot find the value for {input_name}')
+                data_type = None
+                print(f'Cannot find the data type for {input_name}')
+            # Store initialized data to .data file
+            if ('scale' not in input_name) and ('zero_point' not in input_name):
+                try:
+                    with open(data_dir+'/'+input_name+'.data', 'wb') as f_indep:
+                        f_indep.write(ini_value[input_name])
+                except:
+                    print(f'Cannot find the value for {input_name}')
+            else:
+                # Only scale/zero point in QuantizeLinear,DequantizeLinear should be included in json
+                if node.op_type in ('QuantizeLinear', 'DequantizeLinear'):
+                    value = np.frombuffer(ini_value[input_name], dtype=eval('np.'+ini_type[input_name]))
+                    assert len(value) == 1
+                    value = value[0]
+                else:
+                    continue  # ignore scale and zero point for other operator
             print(f'  Input: {input_name} {ort_outs.get(input_name)} independent')
-            input_info_list.append({'name': f'{input_name}', 'shape': f'{ort_outs.get(input_name)}', 'type': 'independent'})
+            input_info_list.append({'name': f'{input_name}', 'shape': f'{ort_outs.get(input_name)}', \
+                                    'value': f'{value}', 'type': f'{data_type}', 'dependency': 'independent'})
         elif dup_count == 1:
             num_input += 1
             print(f'  Input: {input_name} {ort_outs.get(input_name)} dependent')
-            input_info_list.append({'name': f'{input_name}', 'shape': f'{ort_outs.get(input_name)}', 'type': 'dependent'})
+            input_info_list.append({'name': f'{input_name}', 'shape': f'{ort_outs.get(input_name)}', \
+                                    'dependency': 'dependent'})
     for output_name in node.output:
         dup_count = input_names_list.count(output_name)
         num_output += dup_count
@@ -154,6 +204,8 @@ for i, node in enumerate(model.graph.node):
             att_dic[att_name] = att_item.i
         elif att_item.HasField('f'):
             att_dic[att_name] = att_item.f
+        else:
+            print('New data type in attribute!')
     node_list.append({'optype': f'{node.op_type}', 'input': input_info_list, 'attribute': att_dic, 'output': output_info_list, 'link_class': link_class})
 print(optype_list)
 
