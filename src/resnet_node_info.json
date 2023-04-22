@@ -13,7 +13,7 @@
         "name": "data_scale",
         "shape": "()",
         "value": [
-          0.0039215669967234135
+          0.003921561408787966
         ],
         "type": "float32",
         "dependency": "independent"
@@ -96,7 +96,7 @@
         "name": "resnetv22_conv0_fwd_scale",
         "shape": "()",
         "value": [
-          0.023876352235674858
+          0.02414373680949211
         ],
         "type": "float32",
         "dependency": "independent"
@@ -186,7 +186,7 @@
         "name": "resnetv22_pool0_fwd_scale",
         "shape": "()",
         "value": [
-          0.023876352235674858
+          0.02414373680949211
         ],
         "type": "float32",
         "dependency": "independent"
@@ -223,7 +223,7 @@
         "name": "resnetv22_stage1_activation0_scale",
         "shape": "()",
         "value": [
-          0.023876352235674858
+          0.02414373680949211
         ],
         "type": "float32",
         "dependency": "independent"
@@ -1408,7 +1408,7 @@
         "name": "resnetv22_dense0_fwd_scale",
         "shape": "()",
         "value": [
-          0.0011222896864637733
+          0.0011058361269533634
         ],
         "type": "float32",
         "dependency": "independent"
@@ -1417,7 +1417,7 @@
         "name": "resnetv22_dense0_fwd_zero_point",
         "shape": "()",
         "value": [
-          -3
+          0
         ],
         "type": "int8",
         "dependency": "independent"

@@ -64,7 +64,10 @@ for i in reversed(bn_node_indices):
 for node in model.graph.node:
     for input_name in node.input:
         if input_name in bn_name_transfer:
-            node.input[node.input.index(input_name)] = bn_name_transfer[input_name]
+            for idx in range(len(node.input)):
+                if node.input[idx] == input_name:
+                    target_idx = idx
+            node.input[target_idx] = bn_name_transfer[input_name]
 
 # int type dic
 # int_type_dic = {}
