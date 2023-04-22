@@ -1,38 +1,42 @@
 [
   [
     {
-      "optype": "QuantizeLinear",
+      "optype": "BatchNormalization",
       "input": [
         {
           "name": "data",
           "shape": "(1, 3, 224, 224)",
-          "value": null,
-          "type": "None",
-          "dependency": "independent"
+          "type": "independent"
         },
         {
-          "name": "data_scale",
-          "shape": "()",
-          "value": [
-            0.003921561408787966
-          ],
-          "type": "float32",
-          "dependency": "independent"
+          "name": "resnetv22_batchnorm0_gamma",
+          "shape": "(3,)",
+          "type": "independent"
         },
         {
-          "name": "data_zero_point",
-          "shape": "()",
-          "value": [
-            -128
-          ],
-          "type": "int8",
-          "dependency": "independent"
+          "name": "resnetv22_batchnorm0_beta",
+          "shape": "(3,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_batchnorm0_running_mean",
+          "shape": "(3,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_batchnorm0_running_var",
+          "shape": "(3,)",
+          "type": "independent"
         }
       ],
-      "attribute": {},
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
       "output": [
         {
-          "name": "data_quantized",
+          "name": "resnetv22_batchnorm0_fwd",
           "shape": "(1, 3, 224, 224)",
           "num": 1
         }
@@ -40,19 +44,17 @@
       "link_class": "sourceSO"
     },
     {
-      "optype": "QLinearConv",
+      "optype": "Conv",
       "input": [
         {
-          "name": "data_quantized",
+          "name": "resnetv22_batchnorm0_fwd",
           "shape": "(1, 3, 224, 224)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_conv0_weight_quantized",
+          "name": "resnetv22_conv0_weight",
           "shape": "(64, 3, 7, 7)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
+          "type": "independent"
         }
       ],
       "attribute": {
@@ -78,7 +80,7 @@
       },
       "output": [
         {
-          "name": "resnetv22_conv0_fwd_quantized",
+          "name": "resnetv22_conv0_fwd",
           "shape": "(1, 64, 112, 112)",
           "num": 1
         }
@@ -86,30 +88,55 @@
       "link_class": "SISO"
     },
     {
-      "optype": "DequantizeLinear",
+      "optype": "BatchNormalization",
       "input": [
         {
-          "name": "resnetv22_conv0_fwd_quantized",
+          "name": "resnetv22_conv0_fwd",
           "shape": "(1, 64, 112, 112)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_conv0_fwd_scale",
-          "shape": "()",
-          "value": [
-            0.02414373680949211
-          ],
-          "type": "float32",
-          "dependency": "independent"
+          "name": "resnetv22_batchnorm1_gamma",
+          "shape": "(64,)",
+          "type": "independent"
         },
         {
-          "name": "resnetv22_conv0_fwd_zero_point",
-          "shape": "()",
-          "value": [
-            -128
-          ],
-          "type": "int8",
-          "dependency": "independent"
+          "name": "resnetv22_batchnorm1_beta",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_batchnorm1_running_mean",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_batchnorm1_running_var",
+          "shape": "(64,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_batchnorm1_fwd",
+          "shape": "(1, 64, 112, 112)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_batchnorm1_fwd",
+          "shape": "(1, 64, 112, 112)",
+          "type": "dependent"
         }
       ],
       "attribute": {},
@@ -128,7 +155,7 @@
         {
           "name": "resnetv22_relu0_fwd",
           "shape": "(1, 64, 112, 112)",
-          "dependency": "dependent"
+          "type": "dependent"
         }
       ],
       "attribute": {
@@ -159,80 +186,129 @@
   ],
   [
     {
-      "optype": "QuantizeLinear",
+      "optype": "Add",
       "input": [
+        {
+          "name": "resnetv22_stage1_conv1_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        },
         {
           "name": "resnetv22_pool0_fwd",
           "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_pool0_fwd_scale",
-          "shape": "()",
-          "value": [
-            0.02414373680949211
-          ],
-          "type": "float32",
-          "dependency": "independent"
-        },
-        {
-          "name": "resnetv22_pool0_fwd_zero_point",
-          "shape": "()",
-          "value": [
-            -128
-          ],
-          "type": "int8",
-          "dependency": "independent"
+          "type": "dependent"
         }
       ],
       "attribute": {},
       "output": [
         {
-          "name": "resnetv22_pool0_fwd_quantized",
+          "name": "resnetv22_stage1__plus0_Identity",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "MISO"
+    },
+    {
+      "optype": "Identity",
+      "input": [
+        {
+          "name": "resnetv22_stage1__plus0_Identity",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        }
+      ],
+      "output": [
+        {
+          "name": "resnetv22_stage1__plus0",
+          "shape": "(1, 64, 56, 56)",
+          "num": 2
+        }
+      ],
+      "link_class": "SIMO"
+    }
+  ],
+  [
+    {
+      "optype": "Add",
+      "input": [
+        {
+          "name": "resnetv22_stage1_conv3_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage1__plus0",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage1__plus1",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "MISO"
+    },
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage1__plus1",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm0_gamma",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm0_beta",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm0_running_mean",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm0_running_var",
+          "shape": "(64,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage2_batchnorm0_fwd",
           "shape": "(1, 64, 56, 56)",
           "num": 1
         }
       ],
       "link_class": "SISO"
-    }
-  ],
-  [
+    },
     {
-      "optype": "QLinearAdd",
+      "optype": "Relu",
       "input": [
         {
-          "name": "resnetv22_stage1_conv1_fwd_quantized",
+          "name": "resnetv22_stage2_batchnorm0_fwd",
           "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_pool0_fwd_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
+          "type": "dependent"
         }
       ],
       "attribute": {},
       "output": [
         {
-          "name": "resnetv22_stage1__plus0_quantized_Identity",
-          "shape": "(1, 64, 56, 56)",
-          "num": 1
-        }
-      ],
-      "link_class": "MISO"
-    },
-    {
-      "optype": "Identity",
-      "input": [
-        {
-          "name": "resnetv22_stage1__plus0_quantized_Identity",
-          "shape": "(1, 64, 56, 56)",
-          "type": "dependent"
-        }
-      ],
-      "output": [
-        {
-          "name": "resnetv22_stage1__plus0_quantized",
+          "name": "resnetv22_stage2_activation0",
           "shape": "(1, 64, 56, 56)",
           "num": 2
         }
@@ -242,63 +318,17 @@
   ],
   [
     {
-      "optype": "QLinearAdd",
+      "optype": "Conv",
       "input": [
         {
-          "name": "resnetv22_stage1_conv3_fwd_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage1__plus0_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
-        }
-      ],
-      "attribute": {},
-      "output": [
-        {
-          "name": "resnetv22_stage1__plus1_quantized_Identity",
-          "shape": "(1, 64, 56, 56)",
-          "num": 1
-        }
-      ],
-      "link_class": "MISO"
-    },
-    {
-      "optype": "Identity",
-      "input": [
-        {
-          "name": "resnetv22_stage1__plus1_quantized_Identity",
+          "name": "resnetv22_stage2_activation0",
           "shape": "(1, 64, 56, 56)",
           "type": "dependent"
-        }
-      ],
-      "output": [
-        {
-          "name": "resnetv22_stage1__plus1_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "num": 2
-        }
-      ],
-      "link_class": "SIMO"
-    }
-  ],
-  [
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage1__plus1_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
         },
         {
-          "name": "resnetv22_stage2_conv2_weight_quantized",
+          "name": "resnetv22_stage2_conv2_weight",
           "shape": "(128, 64, 1, 1)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
+          "type": "independent"
         }
       ],
       "attribute": {
@@ -324,7 +354,7 @@
       },
       "output": [
         {
-          "name": "resnetv22_stage2_conv2_fwd_quantized",
+          "name": "resnetv22_stage2_conv2_fwd",
           "shape": "(1, 128, 28, 28)",
           "num": 1
         }
@@ -334,23 +364,23 @@
   ],
   [
     {
-      "optype": "QLinearAdd",
+      "optype": "Add",
       "input": [
         {
-          "name": "resnetv22_stage2_conv1_fwd_quantized",
+          "name": "resnetv22_stage2_conv1_fwd",
           "shape": "(1, 128, 28, 28)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage2_conv2_fwd_quantized",
+          "name": "resnetv22_stage2_conv2_fwd",
           "shape": "(1, 128, 28, 28)",
-          "dependency": "dependent"
+          "type": "dependent"
         }
       ],
       "attribute": {},
       "output": [
         {
-          "name": "resnetv22_stage2__plus0_quantized_Identity",
+          "name": "resnetv22_stage2__plus0_Identity",
           "shape": "(1, 128, 28, 28)",
           "num": 1
         }
@@ -361,14 +391,14 @@
       "optype": "Identity",
       "input": [
         {
-          "name": "resnetv22_stage2__plus0_quantized_Identity",
+          "name": "resnetv22_stage2__plus0_Identity",
           "shape": "(1, 128, 28, 28)",
           "type": "dependent"
         }
       ],
       "output": [
         {
-          "name": "resnetv22_stage2__plus0_quantized",
+          "name": "resnetv22_stage2__plus0",
           "shape": "(1, 128, 28, 28)",
           "num": 2
         }
@@ -378,23 +408,23 @@
   ],
   [
     {
-      "optype": "QLinearAdd",
+      "optype": "Add",
       "input": [
         {
-          "name": "resnetv22_stage2_conv4_fwd_quantized",
+          "name": "resnetv22_stage2_conv4_fwd",
           "shape": "(1, 128, 28, 28)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage2__plus0_quantized",
+          "name": "resnetv22_stage2__plus0",
           "shape": "(1, 128, 28, 28)",
-          "dependency": "dependent"
+          "type": "dependent"
         }
       ],
       "attribute": {},
       "output": [
         {
-          "name": "resnetv22_stage2__plus1_quantized_Identity",
+          "name": "resnetv22_stage2__plus1",
           "shape": "(1, 128, 28, 28)",
           "num": 1
         }
@@ -402,17 +432,61 @@
       "link_class": "MISO"
     },
     {
-      "optype": "Identity",
+      "optype": "BatchNormalization",
       "input": [
         {
-          "name": "resnetv22_stage2__plus1_quantized_Identity",
+          "name": "resnetv22_stage2__plus1",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm0_gamma",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm0_beta",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm0_running_mean",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm0_running_var",
+          "shape": "(128,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage3_batchnorm0_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage3_batchnorm0_fwd",
           "shape": "(1, 128, 28, 28)",
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
-          "name": "resnetv22_stage2__plus1_quantized",
+          "name": "resnetv22_stage3_activation0",
           "shape": "(1, 128, 28, 28)",
           "num": 2
         }
@@ -422,19 +496,17 @@
   ],
   [
     {
-      "optype": "QLinearConv",
+      "optype": "Conv",
       "input": [
         {
-          "name": "resnetv22_stage2__plus1_quantized",
+          "name": "resnetv22_stage3_activation0",
           "shape": "(1, 128, 28, 28)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage3_conv2_weight_quantized",
+          "name": "resnetv22_stage3_conv2_weight",
           "shape": "(256, 128, 1, 1)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
+          "type": "independent"
         }
       ],
       "attribute": {
@@ -460,7 +532,7 @@
       },
       "output": [
         {
-          "name": "resnetv22_stage3_conv2_fwd_quantized",
+          "name": "resnetv22_stage3_conv2_fwd",
           "shape": "(1, 256, 14, 14)",
           "num": 1
         }
@@ -470,23 +542,23 @@
   ],
   [
     {
-      "optype": "QLinearAdd",
+      "optype": "Add",
       "input": [
         {
-          "name": "resnetv22_stage3_conv1_fwd_quantized",
+          "name": "resnetv22_stage3_conv1_fwd",
           "shape": "(1, 256, 14, 14)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage3_conv2_fwd_quantized",
+          "name": "resnetv22_stage3_conv2_fwd",
           "shape": "(1, 256, 14, 14)",
-          "dependency": "dependent"
+          "type": "dependent"
         }
       ],
       "attribute": {},
       "output": [
         {
-          "name": "resnetv22_stage3__plus0_quantized_Identity",
+          "name": "resnetv22_stage3__plus0_Identity",
           "shape": "(1, 256, 14, 14)",
           "num": 1
         }
@@ -497,14 +569,14 @@
       "optype": "Identity",
       "input": [
         {
-          "name": "resnetv22_stage3__plus0_quantized_Identity",
+          "name": "resnetv22_stage3__plus0_Identity",
           "shape": "(1, 256, 14, 14)",
           "type": "dependent"
         }
       ],
       "output": [
         {
-          "name": "resnetv22_stage3__plus0_quantized",
+          "name": "resnetv22_stage3__plus0",
           "shape": "(1, 256, 14, 14)",
           "num": 2
         }
@@ -514,23 +586,23 @@
   ],
   [
     {
-      "optype": "QLinearAdd",
+      "optype": "Add",
       "input": [
         {
-          "name": "resnetv22_stage3_conv4_fwd_quantized",
+          "name": "resnetv22_stage3_conv4_fwd",
           "shape": "(1, 256, 14, 14)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage3__plus0_quantized",
+          "name": "resnetv22_stage3__plus0",
           "shape": "(1, 256, 14, 14)",
-          "dependency": "dependent"
+          "type": "dependent"
         }
       ],
       "attribute": {},
       "output": [
         {
-          "name": "resnetv22_stage3__plus1_quantized_Identity",
+          "name": "resnetv22_stage3__plus1",
           "shape": "(1, 256, 14, 14)",
           "num": 1
         }
@@ -538,17 +610,61 @@
       "link_class": "MISO"
     },
     {
-      "optype": "Identity",
+      "optype": "BatchNormalization",
       "input": [
         {
-          "name": "resnetv22_stage3__plus1_quantized_Identity",
+          "name": "resnetv22_stage3__plus1",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm0_gamma",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm0_beta",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm0_running_mean",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm0_running_var",
+          "shape": "(256,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage4_batchnorm0_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage4_batchnorm0_fwd",
           "shape": "(1, 256, 14, 14)",
           "type": "dependent"
         }
       ],
+      "attribute": {},
       "output": [
         {
-          "name": "resnetv22_stage3__plus1_quantized",
+          "name": "resnetv22_stage4_activation0",
           "shape": "(1, 256, 14, 14)",
           "num": 2
         }
@@ -558,19 +674,17 @@
   ],
   [
     {
-      "optype": "QLinearConv",
+      "optype": "Conv",
       "input": [
         {
-          "name": "resnetv22_stage3__plus1_quantized",
+          "name": "resnetv22_stage4_activation0",
           "shape": "(1, 256, 14, 14)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage4_conv2_weight_quantized",
+          "name": "resnetv22_stage4_conv2_weight",
           "shape": "(512, 256, 1, 1)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
+          "type": "independent"
         }
       ],
       "attribute": {
@@ -596,7 +710,7 @@
       },
       "output": [
         {
-          "name": "resnetv22_stage4_conv2_fwd_quantized",
+          "name": "resnetv22_stage4_conv2_fwd",
           "shape": "(1, 512, 7, 7)",
           "num": 1
         }
@@ -606,23 +720,23 @@
   ],
   [
     {
-      "optype": "QLinearAdd",
+      "optype": "Add",
       "input": [
         {
-          "name": "resnetv22_stage4_conv1_fwd_quantized",
+          "name": "resnetv22_stage4_conv1_fwd",
           "shape": "(1, 512, 7, 7)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage4_conv2_fwd_quantized",
+          "name": "resnetv22_stage4_conv2_fwd",
           "shape": "(1, 512, 7, 7)",
-          "dependency": "dependent"
+          "type": "dependent"
         }
       ],
       "attribute": {},
       "output": [
         {
-          "name": "resnetv22_stage4__plus0_quantized_Identity",
+          "name": "resnetv22_stage4__plus0_Identity",
           "shape": "(1, 512, 7, 7)",
           "num": 1
         }
@@ -633,14 +747,14 @@
       "optype": "Identity",
       "input": [
         {
-          "name": "resnetv22_stage4__plus0_quantized_Identity",
+          "name": "resnetv22_stage4__plus0_Identity",
           "shape": "(1, 512, 7, 7)",
           "type": "dependent"
         }
       ],
       "output": [
         {
-          "name": "resnetv22_stage4__plus0_quantized",
+          "name": "resnetv22_stage4__plus0",
           "shape": "(1, 512, 7, 7)",
           "num": 2
         }
@@ -650,23 +764,23 @@
   ],
   [
     {
-      "optype": "QLinearAdd",
+      "optype": "Add",
       "input": [
         {
-          "name": "resnetv22_stage4_conv4_fwd_quantized",
+          "name": "resnetv22_stage4_conv4_fwd",
           "shape": "(1, 512, 7, 7)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage4__plus0_quantized",
+          "name": "resnetv22_stage4__plus0",
           "shape": "(1, 512, 7, 7)",
-          "dependency": "dependent"
+          "type": "dependent"
         }
       ],
       "attribute": {},
       "output": [
         {
-          "name": "resnetv22_stage4__plus1_quantized",
+          "name": "resnetv22_stage4__plus1",
           "shape": "(1, 512, 7, 7)",
           "num": 1
         }
@@ -674,20 +788,80 @@
       "link_class": "MISO"
     },
     {
-      "optype": "QLinearGlobalAveragePool",
+      "optype": "BatchNormalization",
       "input": [
         {
-          "name": "resnetv22_stage4__plus1_quantized",
+          "name": "resnetv22_stage4__plus1",
           "shape": "(1, 512, 7, 7)",
-          "dependency": "dependent"
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_batchnorm2_gamma",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_batchnorm2_beta",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_batchnorm2_running_mean",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_batchnorm2_running_var",
+          "shape": "(512,)",
+          "type": "independent"
         }
       ],
       "attribute": {
-        "channels_last": 0
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
       },
       "output": [
         {
-          "name": "resnetv22_pool1_fwd_quantized",
+          "name": "resnetv22_batchnorm2_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_batchnorm2_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_relu1_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "GlobalAveragePool",
+      "input": [
+        {
+          "name": "resnetv22_relu1_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_pool1_fwd",
           "shape": "(1, 512, 1, 1)",
           "num": 1
         }
@@ -698,20 +872,20 @@
       "optype": "Reshape",
       "input": [
         {
-          "name": "resnetv22_pool1_fwd_quantized",
+          "name": "resnetv22_pool1_fwd",
           "shape": "(1, 512, 1, 1)",
-          "dependency": "dependent"
+          "type": "dependent"
+        },
+        {
+          "name": "reshape_attr_tensor164",
+          "shape": "(2,)",
+          "type": "independent"
         }
       ],
-      "attribute": {
-        "shape": [
-          0,
-          -1
-        ]
-      },
+      "attribute": {},
       "output": [
         {
-          "name": "resnetv22_flatten0_reshape0_quantized",
+          "name": "resnetv22_flatten0_reshape0",
           "shape": "(1, 512)",
           "num": 1
         }
@@ -719,70 +893,30 @@
       "link_class": "SISO"
     },
     {
-      "optype": "QGemm",
+      "optype": "Gemm",
       "input": [
         {
-          "name": "resnetv22_flatten0_reshape0_quantized",
+          "name": "resnetv22_flatten0_reshape0",
           "shape": "(1, 512)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_dense0_weight_quantized",
+          "name": "resnetv22_dense0_weight",
           "shape": "(1000, 512)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
+          "type": "independent"
         },
         {
-          "name": "resnetv22_dense0_bias_quantized",
+          "name": "resnetv22_dense0_bias",
           "shape": "(1000,)",
-          "value": null,
-          "type": "int32",
-          "dependency": "independent"
+          "type": "independent"
         }
       ],
       "attribute": {
         "alpha": 1.0,
+        "beta": 1.0,
         "transA": 0,
         "transB": 1
       },
-      "output": [
-        {
-          "name": "resnetv22_dense0_fwd_quantized",
-          "shape": "(1, 1000)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    },
-    {
-      "optype": "DequantizeLinear",
-      "input": [
-        {
-          "name": "resnetv22_dense0_fwd_quantized",
-          "shape": "(1, 1000)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_dense0_fwd_scale",
-          "shape": "()",
-          "value": [
-            0.0011058361269533634
-          ],
-          "type": "float32",
-          "dependency": "independent"
-        },
-        {
-          "name": "resnetv22_dense0_fwd_zero_point",
-          "shape": "()",
-          "value": [
-            0
-          ],
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {},
       "output": [
         {
           "name": "resnetv22_dense0_fwd",
@@ -795,670 +929,1367 @@
   ],
   [
     {
-      "optype": "QLinearConv",
+      "optype": "BatchNormalization",
       "input": [
         {
-          "name": "resnetv22_stage4__plus0_quantized",
+          "name": "resnetv22_stage4__plus0",
           "shape": "(1, 512, 7, 7)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage4_conv3_weight_quantized",
-          "shape": "(512, 512, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
+          "name": "resnetv22_stage4_batchnorm2_gamma",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm2_beta",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm2_running_mean",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm2_running_var",
+          "shape": "(512,)",
+          "type": "independent"
         }
       ],
       "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
       },
       "output": [
         {
-          "name": "resnetv22_stage4_conv3_fwd_quantized",
+          "name": "resnetv22_stage4_batchnorm2_fwd",
           "shape": "(1, 512, 7, 7)",
           "num": 1
         }
       ],
       "link_class": "SISO"
     },
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage4_conv3_fwd_quantized",
-          "shape": "(1, 512, 7, 7)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage4_conv4_weight_quantized",
-          "shape": "(512, 512, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage4_conv4_fwd_quantized",
-          "shape": "(1, 512, 7, 7)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    }
-  ],
-  [
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage3__plus1_quantized",
-          "shape": "(1, 256, 14, 14)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage4_conv0_weight_quantized",
-          "shape": "(512, 256, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          2,
-          2
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage4_conv0_fwd_quantized",
-          "shape": "(1, 512, 7, 7)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    },
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage4_conv0_fwd_quantized",
-          "shape": "(1, 512, 7, 7)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage4_conv1_weight_quantized",
-          "shape": "(512, 512, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage4_conv1_fwd_quantized",
-          "shape": "(1, 512, 7, 7)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    }
-  ],
-  [
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage3__plus0_quantized",
-          "shape": "(1, 256, 14, 14)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage3_conv3_weight_quantized",
-          "shape": "(256, 256, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage3_conv3_fwd_quantized",
-          "shape": "(1, 256, 14, 14)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    },
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage3_conv3_fwd_quantized",
-          "shape": "(1, 256, 14, 14)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage3_conv4_weight_quantized",
-          "shape": "(256, 256, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage3_conv4_fwd_quantized",
-          "shape": "(1, 256, 14, 14)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    }
-  ],
-  [
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage2__plus1_quantized",
-          "shape": "(1, 128, 28, 28)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage3_conv0_weight_quantized",
-          "shape": "(256, 128, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          2,
-          2
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage3_conv0_fwd_quantized",
-          "shape": "(1, 256, 14, 14)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    },
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage3_conv0_fwd_quantized",
-          "shape": "(1, 256, 14, 14)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage3_conv1_weight_quantized",
-          "shape": "(256, 256, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage3_conv1_fwd_quantized",
-          "shape": "(1, 256, 14, 14)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    }
-  ],
-  [
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage2__plus0_quantized",
-          "shape": "(1, 128, 28, 28)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage2_conv3_weight_quantized",
-          "shape": "(128, 128, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage2_conv3_fwd_quantized",
-          "shape": "(1, 128, 28, 28)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    },
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage2_conv3_fwd_quantized",
-          "shape": "(1, 128, 28, 28)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage2_conv4_weight_quantized",
-          "shape": "(128, 128, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage2_conv4_fwd_quantized",
-          "shape": "(1, 128, 28, 28)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    }
-  ],
-  [
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage1__plus1_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage2_conv0_weight_quantized",
-          "shape": "(128, 64, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          2,
-          2
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage2_conv0_fwd_quantized",
-          "shape": "(1, 128, 28, 28)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    },
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage2_conv0_fwd_quantized",
-          "shape": "(1, 128, 28, 28)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage2_conv1_weight_quantized",
-          "shape": "(128, 128, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage2_conv1_fwd_quantized",
-          "shape": "(1, 128, 28, 28)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    }
-  ],
-  [
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage1__plus0_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage1_conv2_weight_quantized",
-          "shape": "(64, 64, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage1_conv2_fwd_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    },
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage1_conv2_fwd_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage1_conv3_weight_quantized",
-          "shape": "(64, 64, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {
-        "dilations": [
-          1,
-          1
-        ],
-        "group": 1,
-        "kernel_shape": [
-          3,
-          3
-        ],
-        "pads": [
-          1,
-          1,
-          1,
-          1
-        ],
-        "strides": [
-          1,
-          1
-        ]
-      },
-      "output": [
-        {
-          "name": "resnetv22_stage1_conv3_fwd_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    }
-  ],
-  [
     {
       "optype": "Relu",
       "input": [
         {
+          "name": "resnetv22_stage4_batchnorm2_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage4_activation2",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage4_activation2",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage4_conv3_weight",
+          "shape": "(512, 512, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage4_conv3_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage4_conv3_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm3_gamma",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm3_beta",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm3_running_mean",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm3_running_var",
+          "shape": "(512,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage4_batchnorm3_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage4_batchnorm3_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage4_activation3",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage4_activation3",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage4_conv4_weight",
+          "shape": "(512, 512, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage4_conv4_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    }
+  ],
+  [
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage4_activation0",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage4_conv0_weight",
+          "shape": "(512, 256, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage4_conv0_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage4_conv0_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm1_gamma",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm1_beta",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm1_running_mean",
+          "shape": "(512,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage4_batchnorm1_running_var",
+          "shape": "(512,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage4_batchnorm1_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage4_batchnorm1_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage4_activation1",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage4_activation1",
+          "shape": "(1, 512, 7, 7)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage4_conv1_weight",
+          "shape": "(512, 512, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage4_conv1_fwd",
+          "shape": "(1, 512, 7, 7)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    }
+  ],
+  [
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage3__plus0",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm2_gamma",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm2_beta",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm2_running_mean",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm2_running_var",
+          "shape": "(256,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage3_batchnorm2_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage3_batchnorm2_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage3_activation2",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage3_activation2",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage3_conv3_weight",
+          "shape": "(256, 256, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage3_conv3_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage3_conv3_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm3_gamma",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm3_beta",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm3_running_mean",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm3_running_var",
+          "shape": "(256,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage3_batchnorm3_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage3_batchnorm3_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage3_activation3",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage3_activation3",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage3_conv4_weight",
+          "shape": "(256, 256, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage3_conv4_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    }
+  ],
+  [
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage3_activation0",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage3_conv0_weight",
+          "shape": "(256, 128, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage3_conv0_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage3_conv0_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm1_gamma",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm1_beta",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm1_running_mean",
+          "shape": "(256,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage3_batchnorm1_running_var",
+          "shape": "(256,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage3_batchnorm1_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage3_batchnorm1_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage3_activation1",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage3_activation1",
+          "shape": "(1, 256, 14, 14)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage3_conv1_weight",
+          "shape": "(256, 256, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage3_conv1_fwd",
+          "shape": "(1, 256, 14, 14)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    }
+  ],
+  [
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage2__plus0",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm2_gamma",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm2_beta",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm2_running_mean",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm2_running_var",
+          "shape": "(128,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage2_batchnorm2_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage2_batchnorm2_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage2_activation2",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage2_activation2",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage2_conv3_weight",
+          "shape": "(128, 128, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage2_conv3_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage2_conv3_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm3_gamma",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm3_beta",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm3_running_mean",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm3_running_var",
+          "shape": "(128,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage2_batchnorm3_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage2_batchnorm3_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage2_activation3",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage2_activation3",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage2_conv4_weight",
+          "shape": "(128, 128, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage2_conv4_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    }
+  ],
+  [
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage2_activation0",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage2_conv0_weight",
+          "shape": "(128, 64, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          2,
+          2
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage2_conv0_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage2_conv0_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm1_gamma",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm1_beta",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm1_running_mean",
+          "shape": "(128,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage2_batchnorm1_running_var",
+          "shape": "(128,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage2_batchnorm1_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage2_batchnorm1_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage2_activation1",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage2_activation1",
+          "shape": "(1, 128, 28, 28)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage2_conv1_weight",
+          "shape": "(128, 128, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage2_conv1_fwd",
+          "shape": "(1, 128, 28, 28)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    }
+  ],
+  [
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage1__plus0",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm2_gamma",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm2_beta",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm2_running_mean",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm2_running_var",
+          "shape": "(64,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage1_batchnorm2_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage1_batchnorm2_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage1_activation2",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage1_activation2",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage1_conv2_weight",
+          "shape": "(64, 64, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage1_conv2_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
+          "name": "resnetv22_stage1_conv2_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm3_gamma",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm3_beta",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm3_running_mean",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm3_running_var",
+          "shape": "(64,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage1_batchnorm3_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage1_batchnorm3_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage1_activation3",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage1_activation3",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage1_conv3_weight",
+          "shape": "(64, 64, 3, 3)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "dilations": [
+          1,
+          1
+        ],
+        "group": 1,
+        "kernel_shape": [
+          3,
+          3
+        ],
+        "pads": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "strides": [
+          1,
+          1
+        ]
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage1_conv3_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    }
+  ],
+  [
+    {
+      "optype": "BatchNormalization",
+      "input": [
+        {
           "name": "resnetv22_pool0_fwd",
           "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm0_gamma",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm0_beta",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm0_running_mean",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm0_running_var",
+          "shape": "(64,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage1_batchnorm0_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage1_batchnorm0_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
         }
       ],
       "attribute": {},
@@ -1472,56 +2303,17 @@
       "link_class": "SISO"
     },
     {
-      "optype": "QuantizeLinear",
+      "optype": "Conv",
       "input": [
         {
           "name": "resnetv22_stage1_activation0",
           "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage1_activation0_scale",
-          "shape": "()",
-          "value": [
-            0.02414373680949211
-          ],
-          "type": "float32",
-          "dependency": "independent"
-        },
-        {
-          "name": "resnetv22_stage1_activation0_zero_point",
-          "shape": "()",
-          "value": [
-            -128
-          ],
-          "type": "int8",
-          "dependency": "independent"
-        }
-      ],
-      "attribute": {},
-      "output": [
-        {
-          "name": "resnetv22_stage1_activation0_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "num": 1
-        }
-      ],
-      "link_class": "SISO"
-    },
-    {
-      "optype": "QLinearConv",
-      "input": [
-        {
-          "name": "resnetv22_stage1_activation0_quantized",
-          "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
-        },
-        {
-          "name": "resnetv22_stage1_conv0_weight_quantized",
+          "name": "resnetv22_stage1_conv0_weight",
           "shape": "(64, 64, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
+          "type": "independent"
         }
       ],
       "attribute": {
@@ -1547,7 +2339,7 @@
       },
       "output": [
         {
-          "name": "resnetv22_stage1_conv0_fwd_quantized",
+          "name": "resnetv22_stage1_conv0_fwd",
           "shape": "(1, 64, 56, 56)",
           "num": 1
         }
@@ -1555,19 +2347,79 @@
       "link_class": "SISO"
     },
     {
-      "optype": "QLinearConv",
+      "optype": "BatchNormalization",
       "input": [
         {
-          "name": "resnetv22_stage1_conv0_fwd_quantized",
+          "name": "resnetv22_stage1_conv0_fwd",
           "shape": "(1, 64, 56, 56)",
-          "dependency": "dependent"
+          "type": "dependent"
         },
         {
-          "name": "resnetv22_stage1_conv1_weight_quantized",
+          "name": "resnetv22_stage1_batchnorm1_gamma",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm1_beta",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm1_running_mean",
+          "shape": "(64,)",
+          "type": "independent"
+        },
+        {
+          "name": "resnetv22_stage1_batchnorm1_running_var",
+          "shape": "(64,)",
+          "type": "independent"
+        }
+      ],
+      "attribute": {
+        "epsilon": 9.999999747378752e-06,
+        "momentum": 0.8999999761581421,
+        "spatial": 1
+      },
+      "output": [
+        {
+          "name": "resnetv22_stage1_batchnorm1_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Relu",
+      "input": [
+        {
+          "name": "resnetv22_stage1_batchnorm1_fwd",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        }
+      ],
+      "attribute": {},
+      "output": [
+        {
+          "name": "resnetv22_stage1_activation1",
+          "shape": "(1, 64, 56, 56)",
+          "num": 1
+        }
+      ],
+      "link_class": "SISO"
+    },
+    {
+      "optype": "Conv",
+      "input": [
+        {
+          "name": "resnetv22_stage1_activation1",
+          "shape": "(1, 64, 56, 56)",
+          "type": "dependent"
+        },
+        {
+          "name": "resnetv22_stage1_conv1_weight",
           "shape": "(64, 64, 3, 3)",
-          "value": null,
-          "type": "int8",
-          "dependency": "independent"
+          "type": "independent"
         }
       ],
       "attribute": {
@@ -1593,7 +2445,7 @@
       },
       "output": [
         {
-          "name": "resnetv22_stage1_conv1_fwd_quantized",
+          "name": "resnetv22_stage1_conv1_fwd",
           "shape": "(1, 64, 56, 56)",
           "num": 1
         }
