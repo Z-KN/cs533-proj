@@ -11,8 +11,11 @@ parser.add_argument('--model', type=str, required=True, help='Model to analyze (
 # Parse the arguments
 args = parser.parse_args()
 
+output_dir = '../' + args.model
+model_info_dir = output_dir + '/model_info/'
+
 # Open the $(MODEL_NAME)_node_info.json file
-with open(args.model + '_node_info.json') as f_node:
+with open(model_info_dir + args.model + '_node_info.json') as f_node:
     node_dic = json.load(f_node)
 origin_num_nodes = len(node_dic)
 # Augment Node (exclude multi-inputs & multi-outputs node)
@@ -41,7 +44,7 @@ for node_idx in range(len(node_dic)):
         append_nodes.append(suc_node)
 node_dic += append_nodes
 
-with open(args.model + '_node_info_aug.json', 'w') as f_aug:
+with open(model_info_dir + args.model + '_node_info_aug.json', 'w') as f_aug:
     # Write the JSON string to the file
     json.dump(node_dic, f_aug, indent=2)
 augmented_num_nodes = len(node_dic)
@@ -120,7 +123,7 @@ for big_node in cs_list:
     total_small_nodes += len(big_node)
 assert total_small_nodes == augmented_num_nodes
 print(f'[+] Get Big Nodes -> {len(cs_list)}')
-with open(args.model + '_bignode_info.json', 'w') as f_bignode:
+with open(model_info_dir + args.model + '_bignode_info.json', 'w') as f_bignode:
     # Write the JSON string to the file
     json.dump(cs_list, f_bignode, indent=2)
 print('[+] Store big nodes into' + args.model + '_bignode_info.json')
@@ -134,5 +137,5 @@ for source_big_node_idx in range(len(cs_list)):
             if input_port['name'] == output_name:
                 c_matrix[source_big_node_idx, sink_big_node_idx] = 1
 print('[+] Finish generating connection matrix!')
-np.savetxt(args.model + '_connection_matrix.txt', c_matrix, fmt='%d', delimiter=',')
+np.savetxt(model_info_dir + args.model + '_connection_matrix.txt', c_matrix, fmt='%d', delimiter=',')
 print('[+] Store connection matrix into' + args.model + '_connection_matrix.txt')
