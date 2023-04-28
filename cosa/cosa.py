@@ -589,7 +589,8 @@ def run_timeloop(prob_path, arch_path, mapspace_path, output_path):
         spatial_configs = []
         results = run_config.run_config(mapspace, None, perm_config, update_factor_config, status_dict,
                                         run_gen_map=True, run_gen_tc=False, run_sim_test=False, output_path=output_path,
-                                        spatial_configs=spatial_configs, valid_check=False, outer_loopcount_limit=100)
+                                        prob_path=str(prob_path), spatial_configs=spatial_configs, valid_check=False, 
+                                        outer_loopcount_limit=100)
         logging.info(f'status_dict: {status_dict}')
     except:
         logging.error('Error: invalid schedule.')

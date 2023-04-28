@@ -10,8 +10,9 @@ logger.setLevel(logging.DEBUG)  # capture everything
 
 
 def run_config(mapspace, spatial_config, perm_config, factor_config, status_dict=dict(), run_gen_map=True,
-               run_gen_tc=False, run_sim_test=False, output_path='output_dir', spatial_configs=None, exe='sim_test',
-               valid_check=False, nb_sim=False, outer_loopcount_limit=256, delete_invalid=False):
+               run_gen_tc=False, run_sim_test=False, output_path='output_dir', prob_path='prob.yaml', 
+               spatial_configs=None, exe='sim_test', valid_check=False, nb_sim=False, 
+               outer_loopcount_limit=256, delete_invalid=False):
     mapspace.reset_mapspace(spatial_config, spatial_configs)
     mapspace.update_mapspace(perm_config, factor_config)
 
@@ -59,9 +60,11 @@ def run_config(mapspace, spatial_config, perm_config, factor_config, status_dict
     mapping = mapspace.generate_mapping()
 
     output_base = pathlib.Path(output_path).resolve()
-    output_dir = output_base / mapspace.arch.config_str() / mapspace.prob.config_str() / mapspace.config_str()[0] / \
-                 mapspace.config_str()[1]
-    # print(output_dir)
+    # output_dir = output_base / mapspace.arch.config_str() / mapspace.prob.config_str() / mapspace.config_str()[0] / \
+    #              mapspace.config_str()[1]
+    output_dir = output_base / mapspace.arch.config_str()
+    output_dir = pathlib.Path(str(output_dir) + '/' + prob_path.split('_')[-2] + \
+                              '_' + prob_path.split('_')[-1].split('.')[-2])
 
     status_dict[status_dict_key]['output_dir'] = str(output_dir)
 
