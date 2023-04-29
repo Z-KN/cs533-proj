@@ -18,7 +18,7 @@ args = parser.parse_args()
 output_dir = '../' + args.model
 model_info_dir = output_dir + '/model_info/'
 output_path = output_dir + '/cosa_dir/'
-arch_path = Path('../cosa/configs/arch/simba.yaml').resolve()
+arch_path = Path('../cosa/configs/arch/imc.yaml').resolve()
 mapspace_path = Path('../cosa/configs/mapspace/mapspace.yaml').resolve()
 
 # Load the input JSON file
