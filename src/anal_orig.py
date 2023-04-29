@@ -152,6 +152,6 @@ for i, node in enumerate(model.graph.node):
     node_list.append({'optype': f'{node.op_type}', 'input': input_info_list, 'attribute': att_dic, 'output': output_info_list, 'link_class': link_class})
 print(optype_list)
 
-with open(args.model + '_node_info.json', 'w') as f:
+with open(args.model + '_node_info_orig.json', 'w') as f:
     # Write the JSON string to the file
     json.dump(node_list, f, indent=2)
