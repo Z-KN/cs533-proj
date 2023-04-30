@@ -8,13 +8,21 @@ import gurobipy as gp
 # graph3 = np.array([[0, 1, 1],  # Distance between PE1 and all other PEs
 #                   [0, 0, 1],  # Distance between PE2 and all other PEs
 #                   [0, 0, 0]]) # Distance between PE4 and all other PEs
-
 graph = np.array([[0, 1, 1, 0],
                   [0, 0, 0, 1],
                   [0, 0, 0, 1],
                   [0, 0, 0, 0]])
 
-graph = np.loadtxt('resnet_adj_mat.txt',delimiter=',').astype(int)
+graph = np.array([[0, 1, 1, 0, 1, 0, 0, 0],
+                  [0, 0, 0, 1, 0, 0, 0, 0],
+                  [0, 0, 0, 1, 0, 0, 0, 0],
+                  [0, 0, 0, 0, 1, 0, 0, 0],
+                  [0, 0, 0, 0, 0, 1, 0, 0],
+                  [0, 0, 0, 0, 0, 0, 1, 1],
+                  [0, 0, 0, 0, 0, 0, 0, 1],
+                  [0, 0, 0, 0, 0, 0, 0, 0]])
+
+# graph = np.loadtxt('resnet_adj_mat.txt',delimiter=',').astype(int)
 # graph = np.loadtxt('transformer_adj_mat.txt',delimiter=',').astype(int)
 
 # mapping_matrix3 = np.array([[1, 0, 0, 0],  # Node A mapped to PE1
@@ -88,64 +96,121 @@ def gen_dis(row_num, col_num):
 
 distances = gen_dis(6, 6)
 print(distances)
-end_node_id=np.argwhere(np.array([not (graph[i].any()) for i in range(graph.shape[0])]))
-print(end_node_id)
+
+from collections import deque
+
+def bfs(adj_matrix):
+    # Initialize the appended array and the queue
+    num_nodes = len(adj_matrix)
+    appended = np.zeros(num_nodes,dtype=np.int32)
+    last_appended = np.zeros(num_nodes,dtype=np.int32)
+
+    visited = np.zeros(num_nodes,dtype=np.int32)
+    queue = deque()
+    
+    subgraph=[]
+    # Start the BFS from node 0
+    queue.append(0)
+    appended[0] = 1
+    depth_level = [0] * num_nodes
+    nodes_at_level = [[0]]
+    
+    # Traverse the graph using BFS
+    while len(queue) > 0:
+        cur_node = queue.popleft()
+        # visited[cur_node] = 1
+        cur_depth = depth_level[cur_node]
+        
+        all_deps_appended = True  # Flag for checking if all dependencies are appended
+                        
+        for neighbor in np.where(adj_matrix[cur_node,:] == 1)[0]:
+            if appended[neighbor] == 0:
+                queue.append(neighbor)
+                appended[neighbor] = 1
+                depth_level[neighbor] = cur_depth + 1
+                
+                # all_deps_appended = True
+                if len(nodes_at_level) <= depth_level[neighbor]:
+                    nodes_at_level.append([neighbor])
+                else:
+                    nodes_at_level[depth_level[neighbor]].append(neighbor)
+                # print(nodes_at_level)
+                for dep in np.where(adj_matrix[:,neighbor] == 1)[0]:
+                    if dep not in appended:
+                        all_deps_appended = False
+                        break
+        # print(all_deps_appended)
+        if all_deps_appended:
+            new_subgraph = appended.copy() - last_appended
+            if(new_subgraph.any()):
+                # avoid all zero, occuring at the end
+                subgraph.append(new_subgraph)
+            last_appended = appended.copy()
+            # print("SUBG",subgraph)
+        # todo: remove the augementation part
+    return depth_level, nodes_at_level, subgraph
+
+print(bfs(graph))
+
+
+# end_node_id=np.argwhere(np.array([not (graph[i].any()) for i in range(graph.shape[0])]))
+# print(end_node_id)
 # print(comm_matrix(graph,distances,mapping_matrix))
 # Create a new model
-m = gp.Model()
+# m = gp.Model()
 
-num_PE = distances.shape[0]
-print(num_PE)
-num_var = graph.shape[0]
-mapping_space = m.addMVar((num_var,num_PE),vtype=gp.GRB.BINARY)
-Q = np.eye(num_PE)
-for i in range(num_var):
-    print(i)
-    m.addMConstr(np.full((1, num_PE), 1), mapping_space[i].T, '=', np.full(1, 1))
-    for j in range(num_var):
-        if i!=j:
-            # different nodes cannot map to the same PE temporarily
-            m.addMQConstr(Q, None, '=', 0, mapping_space[i], mapping_space[j])
-
-comp_lat_per_node=np.array([i+1 for i in range(num_var)])
-# comp_lat_per_node=m.addMVar((num_var),vtype=gp.GRB.INTEGER)
+# num_PE = distances.shape[0]
+# print(num_PE)
+# num_var = graph.shape[0]
+# mapping_space = m.addMVar((num_var,num_PE),vtype=gp.GRB.BINARY)
+# Q = np.eye(num_PE)
 # for i in range(num_var):
-#     m.addConstr(comp_lat_per_node[i]==i+1)
+#     print(i)
+#     m.addMConstr(np.full((1, num_PE), 1), mapping_space[i].T, '=', np.full(1, 1))
+#     for j in range(num_var):
+#         if i!=j:
+#             # different nodes cannot map to the same PE temporarily
+#             m.addMQConstr(Q, None, '=', 0, mapping_space[i], mapping_space[j])
 
-print("HERE2")
-mapping_time=m.addMVar((num_var),vtype=gp.GRB.INTEGER)
-# temporarily treat the first one as beginning
-for i in range(num_var):
-    print(i)
-    if not graph[:,i].any():
-        m.addConstr(mapping_time[i]==0)
-    else:
-        # have dependency
-        # find previous node
-        # fine nonzero index of graph[:i]:
-        dep_id_list=np.where(graph[:,i])[0]
-        for dep_id in dep_id_list:
-            m.addConstr(mapping_time[i]>=mapping_time[dep_id]+comp_lat_per_node[dep_id]+
-                        comm_matrix(graph,distances,mapping_space)[dep_id,i])
+# comp_lat_per_node=np.array([i+1 for i in range(num_var)])
+# # comp_lat_per_node=m.addMVar((num_var),vtype=gp.GRB.INTEGER)
+# # for i in range(num_var):
+# #     m.addConstr(comp_lat_per_node[i]==i+1)
 
-comm_lat=m.addVar(vtype=gp.GRB.INTEGER)
-comm=comm_matrix(graph,distances,mapping_space).sum()
-m.addConstr(comm_lat==comm)
+# print("HERE2")
+# mapping_time=m.addMVar((num_var),vtype=gp.GRB.INTEGER)
+# # temporarily treat the first one as beginning
+# for i in range(num_var):
+#     print(i)
+#     if not graph[:,i].any():
+#         m.addConstr(mapping_time[i]==0)
+#     else:
+#         # have dependency
+#         # find previous node
+#         # fine nonzero index of graph[:i]:
+#         dep_id_list=np.where(graph[:,i])[0]
+#         for dep_id in dep_id_list:
+#             m.addConstr(mapping_time[i]>=mapping_time[dep_id]+comp_lat_per_node[dep_id]+
+#                         comm_matrix(graph,distances,mapping_space)[dep_id,i])
 
-comp_end=m.addMVar((num_var),vtype=gp.GRB.INTEGER)
-end_time=mapping_time+comp_lat_per_node
-for i in range(num_var):
-    m.addConstr(comp_end[i]==end_time[i])
+# comm_lat=m.addVar(vtype=gp.GRB.INTEGER)
+# comm=comm_matrix(graph,distances,mapping_space).sum()
+# m.addConstr(comm_lat==comm)
 
-print("HERE1!")
-# m.Params.NonConvex = 2
-comp_lat=m.addVar(vtype=gp.GRB.INTEGER)
-m.addConstr(comp_lat==gp.max_([comp_end[i] for i in range(num_var)],constant=0))
-# m.addConstr(comp_lat==comp_end[end_node_id])
-m.setObjective((0+1)*(comp_lat), gp.GRB.MINIMIZE)
-m.optimize()
+# comp_end=m.addMVar((num_var),vtype=gp.GRB.INTEGER)
+# end_time=mapping_time+comp_lat_per_node
+# for i in range(num_var):
+#     m.addConstr(comp_end[i]==end_time[i])
 
-print(f"Optimal objective value: {m.objVal}")
-print(f"Solution values: mapping_space=\n{mapping_space.X}")
-print(f"Solution values: mapping_time=\n{mapping_time.X}")
-print(comm_matrix(graph,distances,mapping_space.X))
+# print("HERE1!")
+# # m.Params.NonConvex = 2
+# comp_lat=m.addVar(vtype=gp.GRB.INTEGER)
+# m.addConstr(comp_lat==gp.max_([comp_end[i] for i in range(num_var)],constant=0))
+# # m.addConstr(comp_lat==comp_end[end_node_id])
+# m.setObjective((0+1)*(comp_lat), gp.GRB.MINIMIZE)
+# m.optimize()
+
+# print(f"Optimal objective value: {m.objVal}")
+# print(f"Solution values: mapping_space=\n{mapping_space.X}")
+# print(f"Solution values: mapping_time=\n{mapping_time.X}")
+# print(comm_matrix(graph,distances,mapping_space.X))
