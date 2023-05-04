@@ -51,7 +51,7 @@ graph = np.loadtxt(args.model+'_adj_mat.txt',delimiter=',').astype(int)
 with open(args.model+'_simba_timespace.json') as f:
     comp_lat_per_node = np.array(json.load(f))
     # print(comp_lat_per_node)
-
+# print(graph)
 orig_comp_lat_per_node=comp_lat_per_node.copy()
 
 # mapping_matrix3 = np.array([[1, 0, 0, 0],  # Node A mapped to PE1
@@ -84,7 +84,7 @@ def comm_matrix(graph,distances,mapping_space):
     # both return are ok in terms of sum(),
     # but slightly different meaning
     # print(mapping_space@distances@mapping_space.T)
-    return graph * (mapping_space@distances@mapping_space.T)
+    return graph * (mapping_space@distances@mapping_space.T) / 64
     # print(mapping_space.T@graph@mapping_space)
     # return mapping_space.T@graph@mapping_space * (distances)
 
@@ -142,6 +142,8 @@ def bfs_partition(adj_matrix):
     
     partition=[]
     starting_nodes=[i for i in range(num_nodes) if not adj_matrix[:,i].any()]
+    # print(adj_matrix)
+    print(starting_nodes)
     for i in starting_nodes:
         queue.append(i)
     visited[starting_nodes] = 1
@@ -152,9 +154,11 @@ def bfs_partition(adj_matrix):
     while len(queue) > 0:
         cur_node = queue.popleft()
         cur_depth = depth_level[cur_node]
+        # print("CUR",cur_node)
+        print(queue)
         all_deps_visited = True  # Flag for checking if all dependencies are visited
         
-        neighbors = np.where(adj_matrix[cur_node,:] == 1)[0]
+        neighbors = np.where(adj_matrix[cur_node,:])[0]
         for neighbor in neighbors:
             if visited[neighbor] == 0:
                 queue.append(neighbor)
@@ -169,7 +173,7 @@ def bfs_partition(adj_matrix):
                 # print(nodes_at_depth_levels)
         
         for neighbor in neighbors:
-            for dep in np.where(adj_matrix[:,neighbor] == 1)[0]:
+            for dep in np.where(adj_matrix[:,neighbor])[0]:
                 if not visited[dep]:
                     all_deps_visited = False
                     break
@@ -186,7 +190,7 @@ def bfs_partition(adj_matrix):
 
 # print(bfs(graph))
 _,_,partition=bfs_partition(graph)
-# print("PARTITION",partition)
+print("PARTITION",partition)
 num_nodes_each_subgraph=np.array([i.sum() for i in partition])
 # print("num_nodes_each_subgraph", num_nodes_each_subgraph)
 # temporarily make sure this 
