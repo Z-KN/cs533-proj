@@ -34,8 +34,8 @@ graph = np.array([[0, 0, 1, 0, 1, 0, 0],
                   [0, 0, 0, 0, 0, 0, 1],
                   [0, 0, 0, 0, 0, 0, 0]])
 
-# graph = np.loadtxt('resnet_adj_mat.txt',delimiter=',').astype(int)
-graph = np.loadtxt('transformer_adj_mat.txt',delimiter=',').astype(int)
+graph = np.loadtxt('resnet_adj_mat.txt',delimiter=',').astype(int)
+# graph = np.loadtxt('transformer_adj_mat.txt',delimiter=',').astype(int)
 
 # mapping_matrix3 = np.array([[1, 0, 0, 0],  # Node A mapped to PE1
 #                            [0, 1, 0, 0],   # Node B mapped to PE2
@@ -106,12 +106,12 @@ def gen_dis(row_num, col_num):
 
     return matrix
 
-# with open('resnet_simba_timespace.json') as f:
-with open('transformer_simba_timespace.json') as f:
+with open('resnet_simba_timespace.json') as f:
+# with open('transformer_simba_timespace.json') as f:
     comp_lat_per_node = np.array(json.load(f))
     # print(comp_lat_per_node)
 
-a=comp_lat_per_node.copy()
+orig_comp_lat_per_node=comp_lat_per_node.copy()
 row_PE = 5
 col_PE = 5
 num_PE = row_PE * col_PE
@@ -224,16 +224,14 @@ mapping_space_list = []
 mapping_time_list = []
 for i in range(len(subgraphs)):
     graph = subgraphs[i]
-    print("GGG", graph)
     comp_lat_per_node = subgraph_comp_lat_per_node[i]
-    print("LAT", comp_lat_per_node)
     m = gp.Model()
     num_var = graph.shape[0]
-    print(num_var)
+    # print(num_var)
     mapping_space = m.addMVar((num_var,num_PE),vtype=gp.GRB.BINARY)
     Q = np.eye(num_PE)
     for i in range(num_var):
-        print(i)
+        # print(i)
         m.addMConstr(np.full((1, num_PE), 1), mapping_space[i].T, '=', np.full(1, 1))
         for j in range(num_var):
             if i!=j:
@@ -246,11 +244,9 @@ for i in range(len(subgraphs)):
     # for i in range(num_var):
     #     m.addConstr(comp_lat_per_node[i]==i+1)
 
-    print("HERE2")
     mapping_time=m.addMVar((num_var),vtype=gp.GRB.INTEGER)
     # temporarily treat the first one as beginning
     for i in range(num_var):
-        print(i)
         if not graph[:,i].any():
             m.addConstr(mapping_time[i]==0)
         else:
@@ -271,7 +267,6 @@ for i in range(len(subgraphs)):
     for i in range(num_var):
         m.addConstr(comp_end[i]==end_time[i])
 
-    print("HERE1!")
     # m.Params.NonConvex = 2
     comp_lat=m.addVar(vtype=gp.GRB.INTEGER)
     m.addConstr(comp_lat==gp.max_([comp_end[i] for i in range(num_var)],constant=0))
@@ -290,5 +285,7 @@ for i in range(len(subgraphs)):
 print(obj_val_list)
 print(mapping_space_list)
 print(mapping_time_list)
-print(sum(obj_val_list))
-print("BASELINE TIME", sum(a))
+# print(np.array([sum(obj_val_list)],dtype=np.int32))
+# print(np.array(sum(orig_comp_lat_per_node),dtype=np.int32))
+np.savetxt("compare.txt", np.array([sum(obj_val_list),sum(orig_comp_lat_per_node)],dtype=np.int32),fmt='%d')
+# np.savetxt("baseline.txt", np.array([sum(orig_comp_lat_per_node)],dtype=np.int32),fmt='%d')
