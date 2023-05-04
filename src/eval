@@ -1,4 +1,6 @@
 #! /bin/bash
 
-python3 optimization.py
-python3 plot.py
+# get first three command arguments
+
+python3 optimization.py --model $1 --row $2 --col $3
+python3 plot.py --model $1 --row $2 --col $3

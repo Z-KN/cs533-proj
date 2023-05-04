@@ -2,6 +2,18 @@
 import numpy as np
 import gurobipy as gp
 import json
+
+# add argparse to get the command argument
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--model', help="model", required=False,default='resnet')
+parser.add_argument('--row', help="row number", type=int,required=False,default=4)
+parser.add_argument('--col', help="column number", type=int, required=False,default=4)
+# get values from arguments
+args = parser.parse_args()
+
+
 # Define the mapping matrix
 # Rows correspond to nodes (A, B, C)
 # Columns correspond to processing elements (PE1, PE2, PE3, PE4)
@@ -34,8 +46,13 @@ graph = np.array([[0, 0, 1, 0, 1, 0, 0],
                   [0, 0, 0, 0, 0, 0, 1],
                   [0, 0, 0, 0, 0, 0, 0]])
 
-graph = np.loadtxt('resnet_adj_mat.txt',delimiter=',').astype(int)
-# graph = np.loadtxt('transformer_adj_mat.txt',delimiter=',').astype(int)
+print(f"Now scheduling model {args.model}")
+graph = np.loadtxt(args.model+'_adj_mat.txt',delimiter=',').astype(int)
+with open(args.model+'_simba_timespace.json') as f:
+    comp_lat_per_node = np.array(json.load(f))
+    # print(comp_lat_per_node)
+
+orig_comp_lat_per_node=comp_lat_per_node.copy()
 
 # mapping_matrix3 = np.array([[1, 0, 0, 0],  # Node A mapped to PE1
 #                            [0, 1, 0, 0],   # Node B mapped to PE2
@@ -106,14 +123,9 @@ def gen_dis(row_num, col_num):
 
     return matrix
 
-with open('resnet_simba_timespace.json') as f:
-# with open('transformer_simba_timespace.json') as f:
-    comp_lat_per_node = np.array(json.load(f))
-    # print(comp_lat_per_node)
-
-orig_comp_lat_per_node=comp_lat_per_node.copy()
-row_PE = 5
-col_PE = 5
+row_PE = args.row
+col_PE = args.col
+print(f"Now scheduling {row_PE} x {col_PE} PEs")
 num_PE = row_PE * col_PE
 distances = gen_dis(row_PE, col_PE)
 # print(distances)
@@ -176,7 +188,7 @@ def bfs_partition(adj_matrix):
 _,_,partition=bfs_partition(graph)
 # print("PARTITION",partition)
 num_nodes_each_subgraph=np.array([i.sum() for i in partition])
-print("num_nodes_each_subgraph", num_nodes_each_subgraph)
+# print("num_nodes_each_subgraph", num_nodes_each_subgraph)
 # temporarily make sure this 
 assert (num_PE>=max(num_nodes_each_subgraph))
 # print scan of num_nodes_each_subgraph
@@ -196,7 +208,7 @@ def get_partition_id(num_nodes_each_subgraph,num_PE):
     return partition_id
 partition_id=get_partition_id(num_nodes_each_subgraph,num_PE)
     # print("SUBG COOR", subgraph_coor_range)
-print("ID",partition_id)
+# print("ID",partition_id)
 
 subgraphs=[]
 subgraph_comp_lat_per_node = []
@@ -209,7 +221,7 @@ for i in range(max(partition_id)+1):
     subgraphs.append(subgraph)
     subgraph_comp_lat_per_node.append(np.array([comp_lat_per_node[i] for i in subgraph_coor_range]))
 # print(subgraphs)
-print(subgraph_comp_lat_per_node)
+# print(subgraph_comp_lat_per_node)
 
 # comp_lat_per_node = subgraph_comp_lat_per_node
 # subgraph_comp_lat_per_node = []
@@ -287,5 +299,5 @@ print(mapping_space_list)
 print(mapping_time_list)
 # print(np.array([sum(obj_val_list)],dtype=np.int32))
 # print(np.array(sum(orig_comp_lat_per_node),dtype=np.int32))
-np.savetxt("compare.txt", np.array([sum(obj_val_list),sum(orig_comp_lat_per_node)],dtype=np.int32),fmt='%d')
+np.savetxt(f"{args.model}_compare_{args.row}_{args.col}.txt", np.array([sum(orig_comp_lat_per_node),sum(obj_val_list)],dtype=np.int32),fmt='%d')
 # np.savetxt("baseline.txt", np.array([sum(orig_comp_lat_per_node)],dtype=np.int32),fmt='%d')
