@@ -60,9 +60,11 @@ output_dir = '../' + args.model
 model_info_dir = output_dir + '/model_info'
 data_dir = output_dir + '/data_dir'
 cosa_dir = output_dir + '/cosa_dir'
+result_dir = output_dir + '/result'
 create_dir(model_info_dir)
 create_dir(data_dir)
 create_dir(cosa_dir)
+create_dir(result_dir)
 
 ort_session = ort.InferenceSession(model_path)
 org_outputs = [x.name for x in ort_session.get_outputs()]

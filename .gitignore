@@ -6,4 +6,5 @@ __pycache__/
 *.txt
 !resnet_connection_matrix.txt
 !transformer_connection_matrix.txt
+!*_compare_*.txt
 debug.lp

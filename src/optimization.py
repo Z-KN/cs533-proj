@@ -178,7 +178,7 @@ graph = np.array([[0, 0, 1, 0, 1, 0, 0],
 print(f"Now scheduling model {args.model}")
 output_dir = '../' + args.model
 model_info_dir = output_dir + '/model_info/'
-cosa_path = output_dir + '/cosa_dir/' + args.hw + '/'
+model_result_dir = output_dir + '/result/'
 # load adjacent matrix
 graph = np.loadtxt(model_info_dir + args.model + '_connection_matrix.txt',delimiter=',').astype(int)
 # load opt timespace
@@ -358,5 +358,5 @@ print(mapping_space_list)
 print(mapping_time_list)
 # print(np.array([sum(obj_val_list)],dtype=np.int32))
 # print(np.array(sum(orig_comp_lat_per_node),dtype=np.int32))
-np.savetxt(model_info_dir + f"{args.model}_compare_{args.row}_{args.col}.txt", np.array([baseline_time,sum(obj_val_list)+extra_ls_time,sum(orig_comp_lat_per_node)],dtype=np.int32),fmt='%d')
+np.savetxt(model_result_dir + f"{args.model}_compare_{args.row}_{args.col}.txt", np.array([baseline_time,sum(obj_val_list)+extra_ls_time,sum(orig_comp_lat_per_node)+extra_ls_time],dtype=np.int32),fmt='%d')
 # np.savetxt("baseline.txt", np.array([sum(orig_comp_lat_per_node)],dtype=np.int32),fmt='%d')
