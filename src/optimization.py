@@ -143,7 +143,6 @@ def bfs_partition(adj_matrix):
     partition=[]
     starting_nodes=[i for i in range(num_nodes) if not adj_matrix[:,i].any()]
     # print(adj_matrix)
-    print(starting_nodes)
     for i in starting_nodes:
         queue.append(i)
     visited[starting_nodes] = 1
@@ -155,7 +154,6 @@ def bfs_partition(adj_matrix):
         cur_node = queue.popleft()
         cur_depth = depth_level[cur_node]
         # print("CUR",cur_node)
-        print(queue)
         all_deps_visited = True  # Flag for checking if all dependencies are visited
         
         neighbors = np.where(adj_matrix[cur_node,:])[0]
