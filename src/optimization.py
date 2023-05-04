@@ -67,8 +67,6 @@ def bfs_partition(adj_matrix):
     
     partition=[]
     starting_nodes=[i for i in range(num_nodes) if not adj_matrix[:,i].any()]
-    # print(adj_matrix)
-    print(starting_nodes)
     for i in starting_nodes:
         queue.append(i)
     visited[starting_nodes] = 1
@@ -79,8 +77,6 @@ def bfs_partition(adj_matrix):
     while len(queue) > 0:
         cur_node = queue.popleft()
         cur_depth = depth_level[cur_node]
-        # print("CUR",cur_node)
-        print(queue)
         all_deps_visited = True  # Flag for checking if all dependencies are visited
         
         neighbors = np.where(adj_matrix[cur_node,:])[0]
@@ -223,7 +219,7 @@ distances = gen_dis(row_PE, col_PE)
 
 # print(bfs(graph))
 _,_,partition=bfs_partition(graph)
-print("PARTITION",partition)
+# print("PARTITION",partition)
 num_nodes_each_subgraph=np.array([i.sum() for i in partition])
 # print("num_nodes_each_subgraph", num_nodes_each_subgraph)
 # temporarily make sure this 
@@ -294,6 +290,7 @@ obj_val_list=[]
 mapping_space_list = []
 mapping_time_list = []
 for i in range(len(subgraphs)):
+    print(f"Now executing subgraph {i}")
     graph = subgraphs[i]
     comp_lat_per_node = subgraph_comp_lat_per_node[i]
     m = gp.Model()
@@ -343,6 +340,7 @@ for i in range(len(subgraphs)):
     m.addConstr(comp_lat==gp.max_([comp_end[i] for i in range(num_var)],constant=0))
     # m.addConstr(comp_lat==comp_end[end_node_id])
     m.setObjective((0+1)*(comp_lat), gp.GRB.MINIMIZE)
+    m.setParam('TimeLimit', 10*60)
     m.optimize()
 
     print(f"Optimal objective value: {m.objVal}")
