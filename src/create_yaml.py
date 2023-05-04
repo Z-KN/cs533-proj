@@ -11,6 +11,8 @@ import pdb
 parser = argparse.ArgumentParser(description='Analyzing transformer and resnet models.')
 parser.add_argument('--model', type=str, required=False, help='Model to analyze (transformer or resnet)',
                     default='transformer')
+parser.add_argument('--hw', type=str, required=False, help='Hardware the model is run on',
+                    default='imc')
 
 # Parse the arguments
 args = parser.parse_args()
@@ -18,7 +20,7 @@ args = parser.parse_args()
 output_dir = '../' + args.model
 model_info_dir = output_dir + '/model_info/'
 output_path = output_dir + '/cosa_dir/'
-arch_path = Path('../cosa/configs/arch/imc.yaml').resolve()
+arch_path = Path('../cosa/configs/arch/' + args.hw + '.yaml').resolve()
 mapspace_path = Path('../cosa/configs/mapspace/mapspace.yaml').resolve()
 
 # Load the input JSON file

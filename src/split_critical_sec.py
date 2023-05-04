@@ -5,6 +5,12 @@ import numpy as np
 import pdb
 
 
+def reduce_shape(shape):
+    num_words = 1
+    for dim in shape:
+        num_words *= dim
+    return num_words
+
 # Create an argparse object and add arguments
 parser = argparse.ArgumentParser(description='Analyzing transformer and resnet models.')
 parser.add_argument('--model', type=str, required=True, help='Model to analyze (transformer or resnet)')
@@ -132,10 +138,12 @@ print('[+] Store big nodes into' + args.model + '_bignode_info.json')
 c_matrix = np.zeros((len(cs_list), len(cs_list)))
 for source_big_node_idx in range(len(cs_list)):
     output_name = cs_list[source_big_node_idx][-1]['output'][0]['name']
+    output_shape = eval(cs_list[source_big_node_idx][-1]['output'][0]['shape'])
+    num_words = reduce_shape(output_shape)
     for sink_big_node_idx in range(len(cs_list)):
         for input_port in cs_list[sink_big_node_idx][0]['input']:
             if input_port['name'] == output_name:
-                c_matrix[source_big_node_idx, sink_big_node_idx] = 1
+                c_matrix[source_big_node_idx, sink_big_node_idx] = num_words
 print('[+] Finish generating connection matrix!')
 np.savetxt(model_info_dir + args.model + '_connection_matrix.txt', c_matrix, fmt='%d', delimiter=',')
 print('[+] Store connection matrix into' + args.model + '_connection_matrix.txt')
