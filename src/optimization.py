@@ -5,6 +5,7 @@ import json
 # add argparse to get the command argument
 import argparse
 from math import ceil
+from copy import deepcopy
 import pdb
 
 
@@ -18,7 +19,7 @@ def comm_matrix(graph,distances,mapping_space):
     # both return are ok in terms of sum(),
     # but slightly different meaning
     # print(mapping_space@distances@mapping_space.T)
-    return graph * (mapping_space@distances@mapping_space.T) / 64
+    return np.ceil(graph/64) * (mapping_space@distances@mapping_space.T)
     # print(mapping_space.T@graph@mapping_space)
     # return mapping_space.T@graph@mapping_space * (distances)
 
@@ -68,7 +69,7 @@ def bfs_partition(adj_matrix):
     partition=[]
     starting_nodes=[i for i in range(num_nodes) if not adj_matrix[:,i].any()]
     # print(adj_matrix)
-    print(starting_nodes)
+    # print(starting_nodes)
     for i in starting_nodes:
         queue.append(i)
     visited[starting_nodes] = 1
@@ -80,7 +81,7 @@ def bfs_partition(adj_matrix):
         cur_node = queue.popleft()
         cur_depth = depth_level[cur_node]
         # print("CUR",cur_node)
-        print(queue)
+        # print(queue)
         all_deps_visited = True  # Flag for checking if all dependencies are visited
         
         neighbors = np.where(adj_matrix[cur_node,:])[0]
@@ -104,11 +105,11 @@ def bfs_partition(adj_matrix):
                     break
         # print(all_deps_visited)
         if all_deps_visited:
-            new_partition = visited.copy() - last_visited
+            new_partition = deepcopy(visited) - last_visited
             if(new_partition.any()):
                 # avoid all zero, occuring at the end
                 partition.append(new_partition)
-            last_visited = visited.copy()
+            last_visited = deepcopy(visited)
             # print("SUBG",partition)
         # todo: remove the augementation part
     return depth_level, nodes_at_depth_levels, partition
@@ -127,6 +128,57 @@ def get_partition_id(num_nodes_each_subgraph,num_PE):
             cum_id += 1
     return partition_id
 
+def topological_sort(graph):
+    """
+    Performs a topological sort of a directed acyclic graph.
+    Returns a list of the nodes in topological order.
+    """
+    # figure out the number of dependencies
+    in_degree = {}
+    for col_bignode_idx in range(graph.shape[1]):
+        in_degree[col_bignode_idx] = 0
+        for row_bignode_idx in range(graph.shape[0]):
+            if graph[row_bignode_idx][col_bignode_idx] != 0:
+                in_degree[col_bignode_idx] += 1
+    # initialize the free node queue
+    queue = []
+    for col_bignode_idx in range(graph.shape[1]):
+        if in_degree[col_bignode_idx] == 0:
+            queue.append(col_bignode_idx)
+            in_degree[col_bignode_idx] = -1
+    start_list = deepcopy(queue)
+    topo_order = []
+    while queue:
+        node = queue.pop(0)
+        topo_order.append(node)
+        for col_bignode_idx in range(graph.shape[1]):
+            if graph[node][col_bignode_idx] > 0:
+                in_degree[col_bignode_idx] -= 1
+            if in_degree[col_bignode_idx] == 0:
+                queue.append(col_bignode_idx)
+                in_degree[col_bignode_idx] = -1
+
+    return topo_order, start_list
+
+def longest_path(graph, node_time, dependency_order, start_list):
+    """
+    Search for the longest path
+    """
+
+    dist = {node: -1 for node in range(graph.shape[0])}
+    for start in start_list:
+        dist[start] = node_time[start]
+
+
+    for cur_node in dependency_order:
+        for col_bignode_idx in range(graph.shape[0]):
+            if graph[cur_node][col_bignode_idx] > 0:
+                neighbor = col_bignode_idx
+                if dist[cur_node] + node_time[neighbor] > dist[neighbor]:
+                    dist[neighbor] = dist[cur_node] + node_time[neighbor]
+
+    return dist
+
 def reduce_shape(shape):
     num_words = 1
     for dim in shape:
@@ -137,8 +189,10 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--model', help="model", required=False,default='resnet')
 parser.add_argument('--hw', type=str, required=False, help='Hardware the model is run on',
                     default='imc')
-parser.add_argument('--row', help="row number", type=int,required=False,default=4)
-parser.add_argument('--col', help="column number", type=int, required=False,default=4)
+parser.add_argument('--row', help="row number", type=int, required=False, default=4)
+parser.add_argument('--col', help="column number", type=int, required=False, default=4)
+parser.add_argument('--par', help="partition algorithm", type=str, required=False, 
+                    default='bfs')
 # get values from arguments
 args = parser.parse_args()
 
@@ -186,7 +240,7 @@ with open(model_info_dir + args.model + '_' + args.hw + '_bignode_timespace.json
     comp_lat_per_node = np.array(json.load(f))
     # print(comp_lat_per_node)
 # print(graph)
-orig_comp_lat_per_node=comp_lat_per_node.copy()
+orig_comp_lat_per_node = deepcopy(comp_lat_per_node)
 # load baseline time
 with open(model_info_dir + args.model + '_' + args.hw + '_baseline_timespace.json') as f:
     baseline_time = np.array(json.load(f))[0]
@@ -221,33 +275,50 @@ num_PE = row_PE * col_PE
 distances = gen_dis(row_PE, col_PE)
 # print(distances)
 
-# print(bfs(graph))
-_,_,partition=bfs_partition(graph)
-print("PARTITION",partition)
-num_nodes_each_subgraph=np.array([i.sum() for i in partition])
-# print("num_nodes_each_subgraph", num_nodes_each_subgraph)
-# temporarily make sure this 
-assert (num_PE>=max(num_nodes_each_subgraph))
-# print scan of num_nodes_each_subgraph
+# Compute ideal lowerbound
+dependency_order, start_list = topological_sort(graph)
+end_time_list = longest_path(graph, orig_comp_lat_per_node, dependency_order, start_list)
+lower_bound = end_time_list[dependency_order[-1]]
+print(f"LowerBound: {lower_bound}")
 
-partition_id=get_partition_id(num_nodes_each_subgraph,num_PE)
-    # print("SUBG COOR", subgraph_coor_range)
-# print("ID",partition_id)
-
+# Graph Parition 
+parition_sets = []
 subgraphs=[]
 subgraph_comp_lat_per_node = []
-parition_sets = []
-for i in range(max(partition_id)+1):
-    subgraph_coor_range=np.arange(0)
-    for j in np.where(partition_id==i)[0]:
-        subgraph_coor_range = np.concatenate((subgraph_coor_range, np.where(partition[j])[0]))
-    subgraph = graph[subgraph_coor_range,:][:,subgraph_coor_range]
-    parition_sets.append(subgraph_coor_range)
-    print(subgraph_coor_range)
-    subgraphs.append(subgraph)
-    subgraph_comp_lat_per_node.append(np.array([comp_lat_per_node[i] for i in subgraph_coor_range]))
-# print(subgraphs)
-# print(subgraph_comp_lat_per_node)
+if args.par == 'bfs':
+    print("[+] BFS Partition Start:")
+    # print(bfs(graph))
+    _,_,partition=bfs_partition(graph)
+    # print("PARTITION",partition)
+    num_nodes_each_subgraph=np.array([i.sum() for i in partition])
+    # print("num_nodes_each_subgraph", num_nodes_each_subgraph)
+    # temporarily make sure this 
+    assert (num_PE>=max(num_nodes_each_subgraph))
+    # print scan of num_nodes_each_subgraph
+
+    partition_id=get_partition_id(num_nodes_each_subgraph,num_PE)
+        # print("SUBG COOR", subgraph_coor_range)
+    # print("ID",partition_id)
+    for i in range(max(partition_id)+1):
+        subgraph_coor_range=np.arange(0)
+        for j in np.where(partition_id==i)[0]:
+            subgraph_coor_range = np.concatenate((subgraph_coor_range, np.where(partition[j])[0]))
+        print(subgraph_coor_range)
+        subgraph = graph[subgraph_coor_range,:][:,subgraph_coor_range]
+        parition_sets.append(subgraph_coor_range)
+        subgraphs.append(subgraph)
+        subgraph_comp_lat_per_node.append(np.array([comp_lat_per_node[i] for i in subgraph_coor_range]))
+    # print(subgraphs)
+    # print(subgraph_comp_lat_per_node)
+elif args.par == 'ds':
+    print("[+] Dependency Sorting Partition Start:")
+    for i in range(0, len(dependency_order), num_PE):
+        subgraph_coor_range = dependency_order[i:i + num_PE]
+        print(subgraph_coor_range)
+        subgraph = graph[subgraph_coor_range,:][:,subgraph_coor_range]
+        parition_sets.append(subgraph_coor_range)
+        subgraphs.append(subgraph)
+        subgraph_comp_lat_per_node.append(np.array([comp_lat_per_node[i] for i in subgraph_coor_range]))
 
 # Compute extra time required between load store paritions
 extra_ls_time = 0
@@ -281,7 +352,7 @@ for parition_idx in range(len(parition_sets)):
                                 output_history.append(output_name)
                                 extra_ls_time += ceil(num_words / words_per_cycle)  # store time
 
-
+print(f"extra time: {extra_ls_time}")
 # comp_lat_per_node = subgraph_comp_lat_per_node
 # subgraph_comp_lat_per_node = []
 # for i in range(max(partition_id)):
@@ -294,6 +365,7 @@ obj_val_list=[]
 mapping_space_list = []
 mapping_time_list = []
 for i in range(len(subgraphs)):
+    print(f"Now subgraph: {i}/{len(subgraphs)-1}")
     graph = subgraphs[i]
     comp_lat_per_node = subgraph_comp_lat_per_node[i]
     m = gp.Model()
@@ -343,6 +415,8 @@ for i in range(len(subgraphs)):
     m.addConstr(comp_lat==gp.max_([comp_end[i] for i in range(num_var)],constant=0))
     # m.addConstr(comp_lat==comp_end[end_node_id])
     m.setObjective((0+1)*(comp_lat), gp.GRB.MINIMIZE)
+    m.setParam('TimeLimit', 10*60)
+    # m.setParam('MIPGap', 5e-3)
     m.optimize()
 
     print(f"Optimal objective value: {m.objVal}")
@@ -358,5 +432,5 @@ print(mapping_space_list)
 print(mapping_time_list)
 # print(np.array([sum(obj_val_list)],dtype=np.int32))
 # print(np.array(sum(orig_comp_lat_per_node),dtype=np.int32))
-np.savetxt(model_result_dir + f"{args.model}_compare_{args.row}_{args.col}.txt", np.array([baseline_time,sum(obj_val_list)+extra_ls_time,sum(orig_comp_lat_per_node)+extra_ls_time],dtype=np.int32),fmt='%d')
+np.savetxt(model_result_dir + f"{args.model}_compare_{args.par}_{args.row}_{args.col}.txt", np.array([baseline_time,sum(obj_val_list)+extra_ls_time,lower_bound],dtype=np.int32),fmt='%d')
 # np.savetxt("baseline.txt", np.array([sum(orig_comp_lat_per_node)],dtype=np.int32),fmt='%d')
