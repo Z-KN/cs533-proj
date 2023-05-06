@@ -364,6 +364,8 @@ print(f"extra time: {extra_ls_time}")
 obj_val_list=[]
 mapping_space_list = []
 mapping_time_list = []
+time = 2 * 60 * 60 // len(subgraphs)
+print(f"Time for each partition: {time}")
 for i in range(len(subgraphs)):
     print(f"Now subgraph: {i}/{len(subgraphs)-1}")
     graph = subgraphs[i]
@@ -415,7 +417,7 @@ for i in range(len(subgraphs)):
     m.addConstr(comp_lat==gp.max_([comp_end[i] for i in range(num_var)],constant=0))
     # m.addConstr(comp_lat==comp_end[end_node_id])
     m.setObjective((0+1)*(comp_lat), gp.GRB.MINIMIZE)
-    m.setParam('TimeLimit', 10*60)
+    m.setParam('TimeLimit', time)
     # m.setParam('MIPGap', 5e-3)
     m.optimize()
 
