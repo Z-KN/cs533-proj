@@ -7,6 +7,7 @@ import argparse
 from math import ceil
 from copy import deepcopy
 import pdb
+import os
 
 
 def comm_matrix(graph,distances,mapping_space):
@@ -62,7 +63,7 @@ def bfs_partition(adj_matrix):
     # Initialize the visited array and the queue
     num_nodes = len(adj_matrix)
     visited = np.zeros(num_nodes,dtype=np.int32)
-    last_partition = np.zeros(num_nodes,dtype=np.int32)
+    last_visited = np.zeros(num_nodes,dtype=np.int32)
 
     queue = deque()
     
@@ -71,9 +72,7 @@ def bfs_partition(adj_matrix):
     # print(adj_matrix)
     for i in starting_nodes:
         queue.append(i)
-    deps_satisfied = np.zeros(num_nodes,dtype=np.int32)
     visited[starting_nodes] = 1
-    deps_satisfied[starting_nodes] = 1
     depth_level = [0] * num_nodes
     nodes_at_depth_levels = [starting_nodes]
 
@@ -95,7 +94,6 @@ def bfs_partition(adj_matrix):
             if visited[neighbor] == 0 and check_dep(neighbor) == 1:
                 queue.append(neighbor)
                 visited[neighbor] = 1
-                # deps_satisfied[neighbor] == check_dep(neighbor)
                 depth_level[neighbor] = cur_depth + 1
                 
                 # all_deps_visited = True
@@ -106,18 +104,16 @@ def bfs_partition(adj_matrix):
                 # print(nodes_at_depth_levels)
         
         for neighbor in neighbors:
-            for dep in np.where(adj_matrix[:,neighbor])[0]:
-                if not visited[dep]:
-                    all_deps_visited = False
-                    break
-        # print(all_deps_visited)
+            if not check_dep(neighbor) == 1:
+                all_deps_visited = False
+                break
         if all_deps_visited:
-            new_visited = visited.copy() - last_partition
+            new_visited = visited.copy() - last_visited
             new_partition = new_visited & visited.copy()
             if(new_partition.any()):
                 # avoid all zero, occuring at the end
                 partition.append(new_partition)
-            last_partition = visited.copy()
+            last_visited = visited.copy()
             # print("SUBG",partition)
         # todo: remove the augementation part
     return depth_level, nodes_at_depth_levels, partition
@@ -194,27 +190,17 @@ def reduce_shape(shape):
     return num_words
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--model', help="model", required=False,default='resnet')
+parser.add_argument('-m','--model', help="model", required=False,default='transformer')
 parser.add_argument('--hw', type=str, required=False, help='Hardware the model is run on',
                     default='imc')
-parser.add_argument('--row', help="row number", type=int, required=False, default=4)
-parser.add_argument('--col', help="column number", type=int, required=False, default=4)
+parser.add_argument('-r','--row', help="row number", type=int, required=False, default=6)
+parser.add_argument('-c','--col', help="column number", type=int, required=False, default=6)
 parser.add_argument('--par', help="partition algorithm", type=str, required=False, 
                     default='bfs')
 # get values from arguments
 args = parser.parse_args()
 
 
-# Define the mapping matrix
-# Rows correspond to nodes (A, B, C)
-# Columns correspond to processing elements (PE1, PE2, PE3, PE4)
-# graph3 = np.array([[0, 1, 1],  # Distance between PE1 and all other PEs
-#                   [0, 0, 1],  # Distance between PE2 and all other PEs
-#                   [0, 0, 0]]) # Distance between PE4 and all other PEs
-graph = np.array([[0, 1, 1, 0],
-                  [0, 0, 0, 1],
-                  [0, 0, 0, 1],
-                  [0, 0, 0, 0]])
 # graph = np.array([[0, 0, 1, 0],
 #                   [0, 0, 0, 1],
 #                   [0, 0, 0, 1],
@@ -229,16 +215,18 @@ graph = np.array([[0, 1, 1, 0],
 #                   [0, 0, 0, 0, 0, 0, 0, 1],
 #                   [0, 0, 0, 0, 0, 0, 0, 0]])
 
-graph = np.array([[0, 0, 1, 0, 1, 0, 0],
-                  [0, 0, 0, 1, 0, 0, 0],
-                  [0, 0, 0, 1, 0, 0, 0],
-                  [0, 0, 0, 0, 1, 0, 0],
-                  [0, 0, 0, 0, 0, 1, 1],
-                  [0, 0, 0, 0, 0, 0, 1],
-                  [0, 0, 0, 0, 0, 0, 0]])
+# graph = np.array([[0, 0, 1, 0, 1, 0, 0],
+#                   [0, 0, 0, 1, 0, 0, 0],
+#                   [0, 0, 0, 1, 0, 0, 0],
+#                   [0, 0, 0, 0, 1, 0, 0],
+#                   [0, 0, 0, 0, 0, 1, 1],
+#                   [0, 0, 0, 0, 0, 0, 1],
+#                   [0, 0, 0, 0, 0, 0, 0]])
 
 print(f"Now scheduling model {args.model}")
-output_dir = '../' + args.model
+# get the absolute path of the output directory
+output_dir = os.path.dirname(os.path.abspath(__file__)) + '/../' + args.model
+# output_dir = '../' + args.model
 model_info_dir = output_dir + '/model_info/'
 model_result_dir = output_dir + '/result/'
 # load adjacent matrix
@@ -287,7 +275,7 @@ distances = gen_dis(row_PE, col_PE)
 dependency_order, start_list = topological_sort(graph)
 end_time_list = longest_path(graph, orig_comp_lat_per_node, dependency_order, start_list)
 lower_bound = end_time_list[dependency_order[-1]]
-print(f"LowerBound: {lower_bound}")
+print(f"Lower Bound: {lower_bound}")
 
 # Graph Parition 
 parition_sets = []
