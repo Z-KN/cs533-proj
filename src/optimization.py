@@ -349,6 +349,7 @@ for parition_idx in range(len(parition_sets)):
                                 extra_ls_time += ceil(num_words / words_per_cycle)  # store time
 
 print(f"extra time: {extra_ls_time}")
+exit(1)
 # comp_lat_per_node = subgraph_comp_lat_per_node
 # subgraph_comp_lat_per_node = []
 # for i in range(max(partition_id)):
