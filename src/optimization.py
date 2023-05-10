@@ -285,6 +285,7 @@ if args.par == 'bfs':
     print("[+] BFS Partition Start:")
     # print(bfs(graph))
     _,_,partition=bfs_partition(graph)
+    pdb.set_trace()
     # print("PARTITION",partition)
     num_nodes_each_subgraph=np.array([i.sum() for i in partition])
     # print("num_nodes_each_subgraph", num_nodes_each_subgraph)
@@ -349,7 +350,7 @@ for parition_idx in range(len(parition_sets)):
                                 extra_ls_time += ceil(num_words / words_per_cycle)  # store time
 
 print(f"extra time: {extra_ls_time}")
-exit(1)
+
 # comp_lat_per_node = subgraph_comp_lat_per_node
 # subgraph_comp_lat_per_node = []
 # for i in range(max(partition_id)):
